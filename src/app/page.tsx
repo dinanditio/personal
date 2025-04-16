@@ -143,11 +143,12 @@ export default function Home() {
         {/* Profile Section */}
         <div className="profile-section">
           <Image 
-            src="https://source.unsplash.com/random/150x150/?footballer" 
+            src="/images/profile.jpg" 
             alt="Dinantinho" 
             width={96} 
             height={96} 
             className="profile-image" 
+            priority
           />
           <h1 className="text-lg font-bold">Dinantinho</h1>
           <p className="text-sm text-muted-foreground">Brazilian Footballer</p>
@@ -228,13 +229,13 @@ export default function Home() {
       </aside>
 
       {/* Main Content */}
-      <main className="main-content flex-1">
-        <div className="max-w-4xl mx-auto">
+      <main className="main-content flex-1 flex flex-col items-center">
+        <div className="max-w-4xl w-full mx-auto">
           {/* Chatbot Section */}
-          <div className="mb-16">
-            <h1 className="text-4xl font-bold mb-8">Hi, I'm Dinantinho. Ask me anything!</h1>
+          <div className="mb-16 flex flex-col items-center">
+            <h1 className="text-4xl font-bold mb-8 text-center">Hi, I'm Dinantinho. Ask me anything!</h1>
             
-            <div className="chatbox">
+            <div className="chatbox w-full max-w-xl">
               <div className="overflow-y-auto max-h-80 mb-4">
                 {chatMessages.map((message, i) => (
                   <div 
@@ -281,7 +282,7 @@ export default function Home() {
               </form>
               
               {/* Quick Response Buttons */}
-              <div className="flex flex-wrap gap-2 mt-4">
+              <div className="flex flex-wrap justify-center gap-2 mt-4">
                 <button 
                   onClick={() => handleQuickResponse('about')}
                   className="button-outline px-3 py-1 text-sm rounded-full"
@@ -318,7 +319,7 @@ export default function Home() {
 
           {/* Projects Section - Desktop Only */}
           <div className="hidden md:block">
-            <h2 className="text-2xl font-bold mb-6">Latest Projects</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">Latest Projects</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map(project => (
                 <div key={project.id} className="project-card">
