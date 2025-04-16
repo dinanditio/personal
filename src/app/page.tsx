@@ -120,7 +120,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-col md:flex-row">
       {/* Mobile Menu Toggle */}
       <button 
         className="mobile-toggle"
@@ -142,19 +142,20 @@ export default function Home() {
       <aside className={`mobile-sidebar md:sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         {/* Profile Section */}
         <div className="profile-section">
-          <Image 
-            src="/images/profile.jpg" 
-            alt="Dinantinho" 
-            width={96} 
-            height={96} 
-            className="profile-image" 
-            priority
-          />
-          <h1 className="text-lg font-bold">Dinantinho</h1>
-          <p className="text-sm text-muted-foreground">Brazilian Footballer</p>
+          <div className="w-24 h-24 mb-2 relative mx-auto">
+            <Image 
+              src="/images/profile.jpg" 
+              alt="Dinantinho" 
+              fill
+              className="rounded-full object-cover border-2 border-primary"
+              priority
+            />
+          </div>
+          <h1 className="text-lg font-bold text-center">Dinantinho</h1>
+          <p className="text-sm text-muted-foreground text-center">Brazilian Footballer</p>
           
           {/* Dark Mode Toggle */}
-          <div className="mt-4 flex items-center">
+          <div className="mt-4 flex items-center justify-center">
             <span className="mr-2 text-sm">
               {isDarkMode ? (
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -211,7 +212,7 @@ export default function Home() {
         
         {/* Latest Projects Section - Mobile Only */}
         <div className="mt-6 md:hidden">
-          <h2 className="text-lg font-semibold mb-2">Latest Projects</h2>
+          <h2 className="text-lg font-semibold mb-2 text-center">Latest Projects</h2>
           <div className="space-y-2">
             {projects.map(project => (
               <a 
@@ -228,14 +229,14 @@ export default function Home() {
         </div>
       </aside>
 
-      {/* Main Content */}
-      <main className="main-content flex-1 flex flex-col items-center">
-        <div className="max-w-4xl w-full mx-auto">
+      {/* Main Content - Centered */}
+      <main className="main-content flex-1 flex flex-col items-center justify-start pt-10">
+        <div className="max-w-4xl w-full mx-auto px-4">
           {/* Chatbot Section */}
           <div className="mb-16 flex flex-col items-center">
             <h1 className="text-4xl font-bold mb-8 text-center">Hi, I'm Dinantinho. Ask me anything!</h1>
             
-            <div className="chatbox w-full max-w-xl">
+            <div className="chatbox w-full max-w-xl mx-auto">
               <div className="overflow-y-auto max-h-80 mb-4">
                 {chatMessages.map((message, i) => (
                   <div 
@@ -319,7 +320,7 @@ export default function Home() {
 
           {/* Projects Section - Desktop Only */}
           <div className="hidden md:block">
-            <h2 className="text-2xl font-bold mb-6 text-center">Latest Projects</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center">Latest Projects</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map(project => (
                 <div key={project.id} className="project-card">
