@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -130,7 +128,7 @@ export default function Home() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent"></div>
             </div>
           </div>
-          © {new Date().getFullYear()} Putra "Dito" Dinantio. All rights reserved.
+          © {new Date().getFullYear()} Putra &ldquo;Dito&rdquo; Dinantio. All rights reserved.
         </footer>
       </main>
     </div>
