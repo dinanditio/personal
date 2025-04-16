@@ -90,7 +90,7 @@
   }
 
   .button-outline {
-    @apply border border-primary text-primary hover:bg-primary/10;
+    @apply border border-primary text-primary hover:bg-secondary;
   }
 
   .chatbox {
@@ -169,7 +169,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/50 rounded-full;
+  @apply bg-primary rounded-full opacity-50;
 }
 
 ::-webkit-scrollbar-thumb:hover {
