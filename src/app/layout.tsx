@@ -3,28 +3,14 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 
 const firaCode = Fira_Code({
-  variable: "--font-fira-code",
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-fira-code",
 });
 
 export const metadata: Metadata = {
-  title: "Putra 'Dito' Dinantio | Political Science Student",
-  description: "Personal website of Putra Dinantio, a political science student",
-  icons: {
-    icon: [
-      {
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    shortcut: ["/favicon.svg"],
-    apple: [
-      {
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-  },
+  title: "Putra Dinantio | Political Science Student",
+  description: "Personal website of Putra Dinantio, a political science student nicknamed Dito",
 };
 
 export default function RootLayout({
@@ -33,10 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${firaCode.variable} antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.svg" />
+      </head>
+      <body className={`${firaCode.variable} font-mono antialiased bg-gradient-to-b from-sky-50 to-white dark:from-sky-900 dark:to-sky-950`}>
         {children}
       </body>
     </html>
   );
-}
+} 
