@@ -2,9 +2,11 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #111111;
-  --accent: #555555;
-  --light-accent: #dddddd;
+  --foreground: #2c3e50;
+  --accent: #3498db;
+  --light-accent: #e0f2ff;
+  --secondary: #74b9ff;
+  --tertiary: #0984e3;
 }
 
 @theme inline {
@@ -12,15 +14,19 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-light-accent: var(--light-accent);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
   --font-main: var(--font-fira-code);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111111;
+    --background: #1a202c;
     --foreground: #f5f5f5;
-    --accent: #aaaaaa;
-    --light-accent: #333333;
+    --accent: #60a5fa;
+    --light-accent: #172a46;
+    --secondary: #3b82f6;
+    --tertiary: #93c5fd;
   }
 }
 
@@ -66,10 +72,10 @@ a:hover, button:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--light-accent);
+  background: var(--accent);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--tertiary);
 }
