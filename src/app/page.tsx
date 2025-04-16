@@ -110,7 +110,7 @@ export default function Home() {
           <div className="card">
             <p className="mb-4">
               I&apos;m a passionate political science student with a deep interest in understanding how 
-              governance systems shape our society and everyday lives. Just like my nickname &ldquo;Dito&ldquo; suggests,
+              governance systems shape our society and everyday lives. Just like my nickname &ldquo;Dito&rdquo; suggests,
               I bring a unique perspective to political analysis.
             </p>
             <p>
