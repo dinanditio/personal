@@ -9,8 +9,8 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Putra Dinantio | Political Science Student",
-  description: "Personal website of Putra Dinantio, a political science student nicknamed Dito",
+  title: "Dinantinho | Brazilian Footballer",
+  description: "Personal portfolio website of Dinantinho, a Brazilian Footballer",
 };
 
 export default function RootLayout({
@@ -19,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" />
       </head>
-      <body className={`${firaCode.variable} font-mono antialiased bg-gradient-to-b from-sky-50 to-white dark:from-sky-900 dark:to-sky-950`}>
+      <body className={`${firaCode.variable} font-mono antialiased transition-colors duration-300`}>
         {children}
       </body>
     </html>

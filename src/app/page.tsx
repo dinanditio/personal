@@ -1,271 +1,351 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+
+// Dummy data for projects
+const projects = [
+  {
+    id: 1,
+    title: 'Goal Scoring Analysis',
+    description: 'Analysis of goal scoring patterns across major European leagues with predictive modeling.',
+    technologies: ['Python', 'Data Analysis', 'Sports Analytics'],
+    link: 'https://github.com/dinanditio/goal-analysis'
+  },
+  {
+    id: 2,
+    title: 'Training Performance Tracker',
+    description: 'Mobile app to track training performance metrics for professional footballers.',
+    technologies: ['React Native', 'Firebase', 'Fitness Tech'],
+    link: 'https://github.com/dinanditio/performance-tracker'
+  },
+  {
+    id: 3,
+    title: 'Tactical Formation Visualizer',
+    description: 'Interactive tool to visualize and analyze team formations and player movements.',
+    technologies: ['JavaScript', 'D3.js', 'Soccer Tactics'],
+    link: 'https://github.com/dinanditio/formation-viz'
+  }
+];
+
+// Predefined responses for chatbot
+const botResponses = {
+  about: "I'm Dinantinho, a professional Brazilian footballer with 8 years of experience playing across South American and European leagues. Known for my technical skills, vision on the field, and ability to create scoring opportunities.",
+  skills: "My key skills include:\n- Advanced ball control and dribbling\n- Strategic passing and playmaking\n- Free kick specialist\n- Field vision and game reading\n- Team leadership\n- Multilingual: Portuguese, English, Spanish",
+  projects: "I've worked on several projects including a Goal Scoring Analysis tool, a Training Performance Tracker, and a Tactical Formation Visualizer. You can ask me about any of these specific projects!",
+  education: "I've completed a Sports Science degree from the University of São Paulo, with specialization in Athletic Performance. I also hold UEFA B coaching license and various certifications in sports nutrition and injury prevention.",
+  contact: "You can reach me at contact@dinantinho.com or through my agent at agent@sportsstars.com. I'm also active on Twitter (@dinantinho) and Instagram (@dinantinho_official)."
+};
 
 export default function Home() {
-  const [isNavVisible, setIsNavVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [chatInput, setChatInput] = useState('');
+  const [chatMessages, setChatMessages] = useState([
+    { type: 'bot', text: 'Hi there! I\'m Dinantinho\'s virtual assistant. How can I help you today?' }
+  ]);
+  const [isTyping, setIsTyping] = useState(false);
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      
-      let current = '';
-      sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < 100) {
-          current = section.getAttribute('id') || '';
-        }
-      });
-      
-      setActiveSection(current);
-      
-      if (window.scrollY > 100) {
-        setIsNavVisible(true);
-      } else {
-        setIsNavVisible(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Check for system preference on initial load
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  useEffect(() => {
+    // Scroll to bottom of chat when messages change
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chatMessages]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
     }
   };
 
-  return (
-    <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-10 transition-all duration-300 ${isNavVisible ? 'bg-white/95 dark:bg-sky-950/95 shadow-md' : 'bg-transparent'}`}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <span className="text-xl font-bold bg-gradient-to-r from-sky-400 to-sky-600 dark:from-sky-300 dark:to-sky-500 text-transparent bg-clip-text">Dito</span>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-4 flex items-center space-x-2">
-                <button onClick={() => scrollToSection('home')} className={`nav-link ${activeSection === 'home' ? 'bg-sky-100 dark:bg-sky-800' : ''}`}>Home</button>
-                <button onClick={() => scrollToSection('about')} className={`nav-link ${activeSection === 'about' ? 'bg-sky-100 dark:bg-sky-800' : ''}`}>About</button>
-                <button onClick={() => scrollToSection('education')} className={`nav-link ${activeSection === 'education' ? 'bg-sky-100 dark:bg-sky-800' : ''}`}>Education</button>
-                <button onClick={() => scrollToSection('interests')} className={`nav-link ${activeSection === 'interests' ? 'bg-sky-100 dark:bg-sky-800' : ''}`}>Interests</button>
-                <button onClick={() => scrollToSection('contact')} className={`nav-link ${activeSection === 'contact' ? 'bg-sky-100 dark:bg-sky-800' : ''}`}>Contact</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+  const handleChatSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!chatInput.trim()) return;
 
-      {/* Hero Section */}
-      <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="w-full md:w-2/3">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Hi, I&apos;m <span className="bg-gradient-to-r from-sky-400 to-blue-500 text-transparent bg-clip-text">Putra Dinantio</span>
-              </h1>
-              <h2 className="text-xl md:text-2xl mb-6 text-sky-700 dark:text-sky-300">Political Science Student</h2>
-              <p className="mb-8 text-lg">
-                Known to friends as <span className="font-semibold text-sky-500">Dito</span> — 
-                exploring the world of politics with the same curiosity and determination 
-                as a Pokémon trainer on their journey.
-              </p>
-              <div className="flex gap-4">
-                <button 
-                  onClick={() => scrollToSection('contact')} 
-                  className="btn btn-primary"
-                >
-                  Get in Touch
-                </button>
-                <button 
-                  onClick={() => scrollToSection('about')} 
-                  className="btn bg-transparent border border-sky-400 text-sky-500 hover:bg-sky-50 dark:hover:bg-sky-900"
-                >
-                  Learn More
-                </button>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 flex justify-center">
-              <div className="relative w-64 h-64 md:w-80 md:h-80">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-100 to-sky-200 dark:from-sky-800 dark:to-sky-900 flex items-center justify-center overflow-hidden border-4 border-white dark:border-sky-700 shadow-lg">
-                  <div className="absolute top-1/2 left-0 right-0 h-2 bg-sky-300 dark:bg-sky-600"></div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white dark:bg-sky-200 rounded-full border-4 border-sky-400 dark:border-sky-500 z-10"></div>
-                </div>
-              </div>
-            </div>
+    // Add user message
+    const userMessage = chatInput.trim();
+    setChatMessages(prev => [...prev, { type: 'user', text: userMessage }]);
+    setChatInput('');
+    setIsTyping(true);
+
+    // Simulate typing delay
+    setTimeout(() => {
+      let response = "I'm not sure how to respond to that. Try asking about my skills, projects, education, or how to contact me.";
+      
+      // Check for keywords in the user message
+      const lowerMessage = userMessage.toLowerCase();
+      
+      if (lowerMessage.includes('about') || lowerMessage.includes('who are you') || lowerMessage.includes('tell me about yourself')) {
+        response = botResponses.about;
+      } else if (lowerMessage.includes('skill') || lowerMessage.includes('what can you do')) {
+        response = botResponses.skills;
+      } else if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
+        response = botResponses.projects;
+      } else if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('degree')) {
+        response = botResponses.education;
+      } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('email')) {
+        response = botResponses.contact;
+      } else if (lowerMessage.includes('goal scoring') || lowerMessage.includes('analysis')) {
+        response = "The Goal Scoring Analysis is a data science project where I analyzed scoring patterns across the top 5 European leagues to identify optimal shooting positions and situations.";
+      } else if (lowerMessage.includes('tracker') || lowerMessage.includes('performance')) {
+        response = "My Training Performance Tracker app helps players monitor their fitness levels, recovery rates, and training load to optimize performance and prevent injuries.";
+      } else if (lowerMessage.includes('formation') || lowerMessage.includes('tactical') || lowerMessage.includes('visualizer')) {
+        response = "The Tactical Formation Visualizer is an interactive tool that helps coaches and analysts visualize team formations, player movements, and tactical patterns during matches.";
+      } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+        response = "Hello! I'm Dinantinho's virtual assistant. How can I help you today?";
+      }
+
+      setChatMessages(prev => [...prev, { type: 'bot', text: response }]);
+      setIsTyping(false);
+    }, 1000);
+  };
+
+  const handleQuickResponse = (topic: keyof typeof botResponses) => {
+    setChatMessages(prev => [
+      ...prev, 
+      { type: 'user', text: `Tell me about your ${topic}` },
+      { type: 'bot', text: botResponses[topic] }
+    ]);
+  };
+
+  return (
+    <div className="min-h-screen flex">
+      {/* Mobile Menu Toggle */}
+      <button 
+        className="mobile-toggle"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle mobile menu"
+      >
+        {isMobileMenuOpen ? (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
+      </button>
+
+      {/* Sidebar */}
+      <aside className={`mobile-sidebar md:sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
+        {/* Profile Section */}
+        <div className="profile-section">
+          <Image 
+            src="https://source.unsplash.com/random/150x150/?footballer" 
+            alt="Dinantinho" 
+            width={96} 
+            height={96} 
+            className="profile-image" 
+          />
+          <h1 className="text-lg font-bold">Dinantinho</h1>
+          <p className="text-sm text-muted-foreground">Brazilian Footballer</p>
+          
+          {/* Dark Mode Toggle */}
+          <div className="mt-4 flex items-center">
+            <span className="mr-2 text-sm">
+              {isDarkMode ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+            </span>
+            <label className="toggle-switch">
+              <input 
+                type="checkbox" 
+                className="toggle-switch-input" 
+                checked={isDarkMode}
+                onChange={toggleDarkMode}
+              />
+              <span className="toggle-switch-label">
+                <span className="toggle-switch-dot"></span>
+              </span>
+            </label>
           </div>
         </div>
-      </section>
-      
-      {/* About Section */}
-      <section id="about" className="py-16 px-4 bg-gradient-to-b from-white to-sky-50 dark:from-sky-950 dark:to-sky-900">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="section-title">About Me</h2>
-          <div className="card">
-            <p className="mb-4">
-              I&apos;m a passionate political science student with a deep interest in understanding how 
-              governance systems shape our society and everyday lives. Just like my nickname &ldquo;Dito&rdquo; suggests,
-              I bring a unique perspective to political analysis.
-            </p>
-            <p>
-              My approach to political science combines rigorous academic analysis with creative thinking.
-              I believe that understanding political systems requires both theoretical knowledge and
-              practical insights into how policies affect communities.
-            </p>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-sky-50 dark:bg-sky-800/50 p-4 rounded-lg">
-                <h3 className="font-medium text-sky-700 dark:text-sky-300 mb-2">Analytical</h3>
-                <p className="text-sm">I analyze political systems with careful attention to detail and context.</p>
-              </div>
-              <div className="bg-sky-50 dark:bg-sky-800/50 p-4 rounded-lg">
-                <h3 className="font-medium text-sky-700 dark:text-sky-300 mb-2">Curious</h3>
-                <p className="text-sm">I approach political questions with the same curiosity as exploring a new region.</p>
-              </div>
-              <div className="bg-sky-50 dark:bg-sky-800/50 p-4 rounded-lg">
-                <h3 className="font-medium text-sky-700 dark:text-sky-300 mb-2">Dedicated</h3>
-                <p className="text-sm">I pursue knowledge and understanding with persistent dedication.</p>
-              </div>
-            </div>
-          </div>
+        
+        {/* Resume & Github Section */}
+        <div className="mt-6 space-y-2">
+          <a 
+            href="/resume.pdf" 
+            target="_blank" 
+            className="nav-item"
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Resume download functionality would be implemented here');
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Resume
+          </a>
+          <a 
+            href="https://github.com/dinanditio" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="nav-item"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
         </div>
-      </section>
-      
-      {/* Education Section */}
-      <section id="education" className="py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="section-title">Education</h2>
-          <div className="card">
-            <div className="mb-6">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-medium text-lg">Bachelor of Political Science</h3>
-                <span className="text-sky-500 bg-sky-50 dark:bg-sky-900 px-3 py-1 rounded-full text-sm">Current</span>
-              </div>
-              <p className="text-sky-600 dark:text-sky-400 mb-1">University Name, 2020 - Present</p>
-              <p className="text-sm">Focusing on comparative politics and political theory with a minor in international relations.</p>
-            </div>
-            <div className="border-t border-sky-100 dark:border-sky-800 pt-4">
-              <h4 className="font-medium mb-2">Key Courses</h4>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <li className="pokemon-bullet">Comparative Political Systems</li>
-                <li className="pokemon-bullet">International Relations Theory</li>
-                <li className="pokemon-bullet">Public Policy Analysis</li>
-                <li className="pokemon-bullet">Political Philosophy</li>
-                <li className="pokemon-bullet">Constitutional Law</li>
-                <li className="pokemon-bullet">Democracy and Governance</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Research Interests */}
-      <section id="interests" className="py-16 px-4 bg-gradient-to-t from-white to-sky-50 dark:from-sky-950 dark:to-sky-900">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="section-title">Research Interests</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="card">
-              <h3 className="font-medium text-lg mb-3 text-sky-700 dark:text-sky-300">Comparative Politics</h3>
-              <p>Examining different political systems and how they shape policy outcomes across various countries and regions.</p>
-            </div>
-            <div className="card">
-              <h3 className="font-medium text-lg mb-3 text-sky-700 dark:text-sky-300">Political Institutions</h3>
-              <p>Studying how formal and informal political institutions influence decision-making processes and power dynamics.</p>
-            </div>
-            <div className="card">
-              <h3 className="font-medium text-lg mb-3 text-sky-700 dark:text-sky-300">Public Policy Analysis</h3>
-              <p>Analyzing how policies are developed, implemented, and evaluated, with a focus on their societal impacts.</p>
-            </div>
-            <div className="card">
-              <h3 className="font-medium text-lg mb-3 text-sky-700 dark:text-sky-300">Democratic Systems</h3>
-              <p>Exploring the challenges and opportunities facing democratic governance in the modern world.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Contact Section */}
-      <section id="contact" className="py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="section-title">Contact</h2>
-          <div className="card">
-            <p className="mb-6">
-              I&apos;m always open to discussing political science, research opportunities, 
-              or just having a conversation about the latest developments in politics.
-              Feel free to reach out through any of the channels below:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-center p-3 bg-sky-50 dark:bg-sky-800/40 rounded-lg transition-transform hover:translate-x-1">
-                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-700 flex items-center justify-center mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-sky-700 dark:text-sky-300">Email</h3>
-                  <p className="text-sm">contact@putradinantio.com</p>
-                </div>
-              </div>
-              <div className="flex items-center p-3 bg-sky-50 dark:bg-sky-800/40 rounded-lg transition-transform hover:translate-x-1">
-                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-700 flex items-center justify-center mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 005.656 0l4-4a4 4 0 10-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-sky-700 dark:text-sky-300">LinkedIn</h3>
-                  <p className="text-sm">linkedin.com/in/putradinantio</p>
-                </div>
-              </div>
-              <div className="flex items-center p-3 bg-sky-50 dark:bg-sky-800/40 rounded-lg transition-transform hover:translate-x-1">
-                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-700 flex items-center justify-center mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-sky-700 dark:text-sky-300">Twitter</h3>
-                  <p className="text-sm">@putradinantio</p>
-                </div>
-              </div>
-              <div className="flex items-center p-3 bg-sky-50 dark:bg-sky-800/40 rounded-lg transition-transform hover:translate-x-1">
-                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-700 flex items-center justify-center mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-sky-700 dark:text-sky-300">Phone</h3>
-                  <p className="text-sm">+1 (123) 456-7890</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-sky-100 dark:bg-sky-900">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-4 flex justify-center space-x-1">
-            {['P', 'U', 'T', 'R', 'A'].map((letter, i) => (
-              <span key={i} className="w-8 h-8 flex items-center justify-center rounded-full bg-sky-200 dark:bg-sky-800 text-sky-700 dark:text-sky-300 text-sm font-bold">{letter}</span>
+        
+        {/* Latest Projects Section - Mobile Only */}
+        <div className="mt-6 md:hidden">
+          <h2 className="text-lg font-semibold mb-2">Latest Projects</h2>
+          <div className="space-y-2">
+            {projects.map(project => (
+              <a 
+                key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-item"
+              >
+                {project.title}
+              </a>
             ))}
           </div>
-          <p className="text-sky-700 dark:text-sky-300 text-sm">
-            &copy; {new Date().getFullYear()} Putra Dinantio. All rights reserved.
-          </p>
-          <p className="text-sky-500 dark:text-sky-400 text-xs mt-1">
-            Inspired by the journey of a Political Science student nicknamed Dito.
-          </p>
         </div>
-      </footer>
-    </main>
+      </aside>
+
+      {/* Main Content */}
+      <main className="main-content flex-1">
+        <div className="max-w-4xl mx-auto">
+          {/* Chatbot Section */}
+          <div className="mb-16">
+            <h1 className="text-4xl font-bold mb-8">Hi, I'm Dinantinho. Ask me anything!</h1>
+            
+            <div className="chatbox">
+              <div className="overflow-y-auto max-h-80 mb-4">
+                {chatMessages.map((message, i) => (
+                  <div 
+                    key={i} 
+                    className={`chat-message ${message.type === 'user' ? 'chat-message-user' : 'chat-message-bot'}`}
+                  >
+                    {message.text.split('\n').map((line, j) => (
+                      <p key={j}>{line}</p>
+                    ))}
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="chat-message chat-message-bot">
+                    <p className="flex">
+                      <span className="animate-bounce">.</span>
+                      <span className="animate-bounce delay-150">.</span>
+                      <span className="animate-bounce delay-300">.</span>
+                    </p>
+                  </div>
+                )}
+                <div ref={chatEndRef} />
+              </div>
+              
+              <form onSubmit={handleChatSubmit}>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    placeholder="Ask me something..."
+                    className="chat-input"
+                    disabled={isTyping}
+                  />
+                  <button 
+                    type="submit"
+                    className="button button-primary"
+                    disabled={isTyping}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              
+              {/* Quick Response Buttons */}
+              <div className="flex flex-wrap gap-2 mt-4">
+                <button 
+                  onClick={() => handleQuickResponse('about')}
+                  className="button-outline px-3 py-1 text-sm rounded-full"
+                >
+                  About Me
+                </button>
+                <button 
+                  onClick={() => handleQuickResponse('skills')}
+                  className="button-outline px-3 py-1 text-sm rounded-full"
+                >
+                  Skills
+                </button>
+                <button 
+                  onClick={() => handleQuickResponse('projects')}
+                  className="button-outline px-3 py-1 text-sm rounded-full"
+                >
+                  Projects
+                </button>
+                <button 
+                  onClick={() => handleQuickResponse('education')}
+                  className="button-outline px-3 py-1 text-sm rounded-full"
+                >
+                  Education
+                </button>
+                <button 
+                  onClick={() => handleQuickResponse('contact')}
+                  className="button-outline px-3 py-1 text-sm rounded-full"
+                >
+                  Contact
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Projects Section - Desktop Only */}
+          <div className="hidden md:block">
+            <h2 className="text-2xl font-bold mb-6">Latest Projects</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map(project => (
+                <div key={project.id} className="project-card">
+                  <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+                  <p className="text-muted-foreground mb-4">{project.description}</p>
+                  <div className="mb-4">
+                    {project.technologies.map((tech, i) => (
+                      <span key={i} className="tech-badge">{tech}</span>
+                    ))}
+                  </div>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button button-outline inline-flex items-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    View Project
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 } 

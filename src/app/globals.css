@@ -3,30 +3,44 @@
 @tailwind utilities;
 
 :root {
-  --blue-light: #e0f2fe;
-  --blue-medium: #7dd3fc;
-  --blue-dark: #0369a1;
-  --white: #ffffff;
-  --text-primary: #0c4a6e;
-  --text-secondary: #0284c7;
-  --accent: #38bdf8;
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #1f2937;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #2563eb;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --blue-light: #0c4a6e;
-    --blue-medium: #0284c7;
-    --blue-dark: #7dd3fc;
-    --white: #0f172a;
-    --text-primary: #e0f2fe;
-    --text-secondary: #7dd3fc;
-    --accent: #38bdf8;
-  }
+.dark {
+  --background: #111827;
+  --foreground: #f9fafb;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1f2937;
+  --secondary-foreground: #f3f4f6;
+  --accent: #60a5fa;
+  --accent-foreground: #ffffff;
+  --muted: #1f2937;
+  --muted-foreground: #9ca3af;
+  --card: #1f2937;
+  --card-foreground: #f9fafb;
+  --border: #374151;
+  --input: #374151;
+  --ring: #3b82f6;
 }
 
 @layer base {
   body {
-    @apply text-sky-900 dark:text-sky-100;
+    @apply bg-background text-foreground transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -35,43 +49,129 @@
 }
 
 @layer components {
-  .btn {
-    @apply px-4 py-2 rounded-md transition-all duration-300 font-medium;
+  .sidebar {
+    @apply fixed top-0 left-0 h-screen w-64 overflow-y-auto bg-card border-r border-border p-4 transition-all duration-300;
   }
 
-  .btn-primary {
-    @apply bg-sky-500 text-white hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500;
+  .main-content {
+    @apply ml-64 p-6 transition-all duration-300;
   }
 
-  .card {
-    @apply bg-white dark:bg-sky-900 rounded-lg p-6 shadow-sm transition-all duration-300 hover:shadow-md border border-sky-100 dark:border-sky-800;
+  .profile-section {
+    @apply flex flex-col items-center mb-6;
   }
 
-  .section-title {
-    @apply text-xl font-semibold mb-4 pb-2 border-b border-sky-200 dark:border-sky-800 text-sky-700 dark:text-sky-300;
-  }
-  
-  .nav-link {
-    @apply px-3 py-2 text-sky-700 dark:text-sky-300 rounded-md hover:bg-sky-100 dark:hover:bg-sky-800 transition-colors;
+  .profile-image {
+    @apply w-24 h-24 rounded-full object-cover border-2 border-primary mb-2;
   }
 
-  .pokemon-bullet {
-    @apply relative pl-6 before:absolute before:left-0 before:top-1.5 before:w-4 before:h-4 before:bg-gradient-to-b before:from-white before:to-white before:rounded-full before:border-2 before:border-sky-500 dark:before:border-sky-400 before:content-[''] before:shadow-sm;
+  .nav-item {
+    @apply flex items-center p-2 rounded-lg text-foreground hover:bg-secondary transition-colors duration-200;
+  }
+
+  .nav-item-active {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .project-card {
+    @apply bg-card border border-border rounded-lg p-4 hover:shadow-md transition-all;
+  }
+
+  .tech-badge {
+    @apply inline-flex items-center px-2 py-1 mr-2 mb-2 rounded-full text-xs font-medium bg-secondary text-secondary-foreground;
+  }
+
+  .button {
+    @apply px-4 py-2 rounded-md font-medium transition-colors;
+  }
+
+  .button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .button-outline {
+    @apply border border-primary text-primary hover:bg-primary/10;
+  }
+
+  .chatbox {
+    @apply bg-card border border-border rounded-lg p-4 max-w-md mx-auto;
+  }
+
+  .chat-message {
+    @apply p-3 rounded-lg mb-2 max-w-[80%];
+  }
+
+  .chat-message-user {
+    @apply bg-primary text-primary-foreground ml-auto;
+  }
+
+  .chat-message-bot {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .chat-input {
+    @apply w-full bg-input text-foreground border border-border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+
+  .toggle-switch {
+    @apply relative inline-flex items-center cursor-pointer;
+  }
+
+  .toggle-switch-input {
+    @apply sr-only;
+  }
+
+  .toggle-switch-label {
+    @apply w-11 h-6 bg-secondary rounded-full transition-colors duration-200;
+  }
+
+  .toggle-switch-dot {
+    @apply absolute w-4 h-4 bg-white rounded-full transition-transform duration-200 transform translate-x-1;
+  }
+
+  .toggle-switch-input:checked + .toggle-switch-label {
+    @apply bg-primary;
+  }
+
+  .toggle-switch-input:checked + .toggle-switch-label .toggle-switch-dot {
+    @apply translate-x-6;
+  }
+
+  .mobile-sidebar {
+    @apply fixed top-0 left-0 h-screen w-64 overflow-y-auto bg-card border-r border-border p-4 z-50 transform -translate-x-full transition-transform duration-300;
+  }
+
+  .mobile-sidebar.open {
+    @apply translate-x-0;
+  }
+
+  .mobile-toggle {
+    @apply fixed top-4 left-4 z-50 p-2 bg-card rounded-full shadow-md border border-border md:hidden;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      @apply -translate-x-full;
+    }
+
+    .main-content {
+      @apply ml-0;
+    }
   }
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-sky-50 dark:bg-sky-900;
+  @apply bg-secondary;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-sky-300 dark:bg-sky-700 rounded-full;
+  @apply bg-primary/50 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-sky-400 dark:bg-sky-600;
+  @apply bg-primary;
 } 
