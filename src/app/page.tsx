@@ -81,6 +81,13 @@ const projects = [
     description: 'Analysis of how social media can strengthen environmental awareness among Jakarta youth.',
     technologies: ['Policy Analysis', 'Research', 'Social Media'],
     link: 'https://drive.google.com/file/d/1qg-EXhTKeBTY0Qso2nd5Qd-NeeiylBCs/view?usp=sharing'
+  },
+  {
+    id: 7,
+    title: 'Charting the Calamities: Tableau Visualization and Analysis of Disasters in DKI Jakarta',
+    description: 'Visualization and analysis of disaster response dynamics in DKI Jakarta using Tableau to identify patterns and insights.',
+    technologies: ['Data Visualization', 'Tableau', 'Disaster Management'],
+    link: 'https://medium.com/@dinantio/charting-the-calamities-tableau-visualization-and-analysis-of-disasters-and-response-dynamics-in-a5752a2382c4'
   }
 ];
 
@@ -392,12 +399,86 @@ const InteractiveText = ({
   );
 };
 
+// Add time responses for specific cities
+const cityTimeZones = {
+  amsterdam: 'Europe/Amsterdam',
+  berlin: 'Europe/Berlin',
+  london: 'Europe/London',
+  paris: 'Europe/Paris',
+  tokyo: 'Asia/Tokyo',
+  newyork: 'America/New_York',
+  singapore: 'Asia/Singapore',
+  sydney: 'Australia/Sydney',
+};
+
+const getCityTime = (city: string) => {
+  if (!cityTimeZones[city as keyof typeof cityTimeZones]) {
+    return null;
+  }
+  
+  try {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: cityTimeZones[city as keyof typeof cityTimeZones],
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZoneName: 'short'
+    });
+    
+    return formatter.format(new Date());
+  } catch (error) {
+    return null;
+  }
+};
+
+// Add additional responses for "apa kabar" and similar questions
+const iceBreakingResponses = {
+  english: [
+    "I'm doing well, thank you for asking! How about you?",
+    "I'm great! Ready to help with any questions about my projects or skills!",
+    "All good here! What would you like to know about me today?"
+  ],
+  bahasa: [
+    "Alhamdulillah, saya baik-baik saja. Bagaimana dengan Anda?",
+    "Kabar saya baik! Anda mau tahu tentang proyek atau keterampilan apa hari ini?",
+    "Semuanya baik! Ada yang bisa saya bantu hari ini?"
+  ]
+};
+
+// Function to fetch cryptocurrency prices
+const fetchCryptoPrice = async (symbol: string) => {
+  try {
+    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${symbol}&vs_currencies=usd,idr`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching crypto price:", error);
+    return null;
+  }
+};
+
+// Function to fetch USD to IDR exchange rate
+const fetchUsdToIdr = async () => {
+  try {
+    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    const data = await response.json();
+    return data.rates.IDR;
+  } catch (error) {
+    console.error("Error fetching exchange rate:", error);
+    return null;
+  }
+};
+
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
-    { type: 'bot', text: "Hello! I'm Ditto. How can I help you today? ^_^", isTyping: true }
+    { type: 'bot', text: "Hello there! 👋 Feel free to browse my projects or reach out for collaborations", isTyping: true }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [activeSection, setActiveSection] = useState('chat');
@@ -439,6 +520,7 @@ export default function Home() {
     }
   };
 
+  // Modify the handleChatSubmit function to include the new functionalities
   const handleChatSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!chatInput.trim()) return;
@@ -450,20 +532,81 @@ export default function Home() {
     setIsTyping(true);
 
     // Simulate typing delay
-    thinkingTimeoutRef.current = setTimeout(() => {
+    thinkingTimeoutRef.current = setTimeout(async () => {
       let response = "I'm not sure how to respond to that. Try asking about my skills, projects, education, or how to contact me.";
       
       // Check for keywords in the user message
       const lowerMessage = userMessage.toLowerCase();
       
+      // Check for cryptocurrency price requests
+      if (lowerMessage.includes('bitcoin') || lowerMessage.includes('btc')) {
+        try {
+          const data = await fetchCryptoPrice('bitcoin');
+          if (data && data.bitcoin) {
+            response = `Current Bitcoin (BTC) price:\n• USD: $${data.bitcoin.usd.toLocaleString()}\n• IDR: Rp${data.bitcoin.idr.toLocaleString()}`;
+          } else {
+            response = "I'm sorry, I couldn't fetch the current Bitcoin price at the moment.";
+          }
+        } catch (error) {
+          response = "I'm sorry, I couldn't fetch the current Bitcoin price at the moment.";
+        }
+      }
+      else if (lowerMessage.includes('ethereum') || lowerMessage.includes('eth')) {
+        try {
+          const data = await fetchCryptoPrice('ethereum');
+          if (data && data.ethereum) {
+            response = `Current Ethereum (ETH) price:\n• USD: $${data.ethereum.usd.toLocaleString()}\n• IDR: Rp${data.ethereum.idr.toLocaleString()}`;
+          } else {
+            response = "I'm sorry, I couldn't fetch the current Ethereum price at the moment.";
+          }
+        } catch (error) {
+          response = "I'm sorry, I couldn't fetch the current Ethereum price at the moment.";
+        }
+      }
+      // Check for USD to IDR exchange rate request
+      else if ((lowerMessage.includes('usd') || lowerMessage.includes('dollar')) && 
+               (lowerMessage.includes('idr') || lowerMessage.includes('rupiah'))) {
+        try {
+          const rate = await fetchUsdToIdr();
+          if (rate) {
+            response = `Current exchange rate:\n• 1 USD = Rp${rate.toLocaleString()}\n• 10 USD = Rp${(rate * 10).toLocaleString()}\n• 100 USD = Rp${(rate * 100).toLocaleString()}`;
+          } else {
+            response = "I'm sorry, I couldn't fetch the current USD to IDR exchange rate at the moment.";
+          }
+        } catch (error) {
+          response = "I'm sorry, I couldn't fetch the current USD to IDR exchange rate at the moment.";
+        }
+      }
+      // Check for time in specific cities
+      else if (lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i)) {
+        const timeMatch = lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i);
+        const city = timeMatch![1].toLowerCase();
+        
+        // Handle specific cities
+        if (cityTimeZones[city as keyof typeof cityTimeZones]) {
+          const cityTime = getCityTime(city);
+          if (cityTime) {
+            response = `The current time in ${city.charAt(0).toUpperCase() + city.slice(1)} is ${cityTime}.`;
+          } else {
+            response = `I apologize, but I couldn't retrieve the current time for ${city}.`;
+          }
+        } else {
+          response = `I don't have time information for ${city}. I can provide times for major cities like Amsterdam, Berlin, London, Paris, Tokyo, New York, Singapore, and Sydney.`;
+        }
+      }
+      // Check for "how are you" / "apa kabar" type questions
+      else if (lowerMessage.includes('how are you') || lowerMessage.includes('how\'s it going') || 
+               lowerMessage.includes('how have you been') || lowerMessage.includes('how do you do')) {
+        const randomIndex = Math.floor(Math.random() * iceBreakingResponses.english.length);
+        response = iceBreakingResponses.english[randomIndex];
+      }
+      else if (lowerMessage.includes('apa kabar') || lowerMessage.includes('kabar') || 
+               lowerMessage.includes('gimana kabarnya') || lowerMessage.includes('bagaimana kabarnya')) {
+        const randomIndex = Math.floor(Math.random() * iceBreakingResponses.bahasa.length);
+        response = iceBreakingResponses.bahasa[randomIndex];
+      }
       // Check for Bahasa Indonesia queries first
-      const isBahasaGreeting = bahasaGreetings.some(greeting => lowerMessage.includes(greeting));
-      const isBahasaQuestion = bahasaQuestionWords.some(word => lowerMessage.includes(word));
-      const isBahasaQuery = isBahasaGreeting || isBahasaQuestion || 
-                            lowerMessage.includes("indonesia") || 
-                            lowerMessage.includes("bahasa");
-      
-      if (isBahasaGreeting && !lowerMessage.includes("english") && !lowerMessage.includes("inggris")) {
+      else if (bahasaGreetings.some(greeting => lowerMessage.includes(greeting)) && !lowerMessage.includes("english") && !lowerMessage.includes("inggris")) {
         // Respond to Bahasa greetings
         const greetingResponses = [
           "Halo! Ada yang bisa saya bantu?",
@@ -473,7 +616,7 @@ export default function Home() {
         response = greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
       } 
       // Indonesian responses
-      else if (isBahasaQuery && lowerMessage.includes("tentang") || lowerMessage.includes("siapa kamu")) {
+      else if (lowerMessage.includes("tentang") || lowerMessage.includes("siapa kamu")) {
         response = bahasaResponses.tentang;
       } else if (lowerMessage.includes("keahlian") || lowerMessage.includes("bisa apa")) {
         response = bahasaResponses.keahlian;
@@ -553,6 +696,11 @@ export default function Home() {
       else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
         response = "Hello! I'm Putra Dinantio's personal assistant. How can I help you today?";
       } 
+      // Name question response (updated as requested)
+      else if (lowerMessage.includes('name') || lowerMessage.includes('who are you') || 
+               (lowerMessage.includes('what') && lowerMessage.includes('your') && lowerMessage.includes('name'))) {
+        response = "My name is Putra Dinantio Nugroho. I'm a Data Science enthusiast with a background in Political Science from the University of Indonesia.";
+      }
       // Fun queries
       else if (lowerMessage.includes('joke')) {
         const jokes = [
@@ -659,8 +807,6 @@ export default function Home() {
         response = "I'm sorry, I don't have access to real-time weather data. You can check a weather app or website for current conditions.";
       } else if (lowerMessage.includes('thank')) {
         response = "You're welcome! Feel free to ask if you have any other questions.";
-      } else if (lowerMessage.includes('name')) {
-        response = "My name is Ditto, I'm Putra Dinantio's personal assistant.";
       } else if (lowerMessage.includes('old') || lowerMessage.includes('age')) {
         response = "I'm a digital assistant, so I don't have an age in the traditional sense. I was created recently!";
       } else if (lowerMessage.includes('color') || lowerMessage.includes('favourite')) {
@@ -696,8 +842,19 @@ export default function Home() {
       thinkingTimeoutRef.current = null;
     }
     
-    // Create the user message text
-    const userMessage = `Tell me about your ${topic}`;
+    // Create customized user message text based on topic
+    let userMessage = "";
+    
+    switch(topic) {
+      case 'about':
+        userMessage = "Tell me about you";
+        break;
+      case 'contact':
+        userMessage = "How can I reach you?";
+        break;
+      default:
+        userMessage = `Tell me about your ${topic}`;
+    }
     
     // Add user message and immediately start bot response
     setChatMessages(prev => [...prev, { type: 'user', text: userMessage, isTyping: false }]);
@@ -740,7 +897,7 @@ export default function Home() {
 
     // Reset chat immediately
     setChatMessages([
-      { type: 'bot', text: "Hello! I'm Ditto. How can I help you today? ^_^", isTyping: true }
+      { type: 'bot', text: "Hello there! 👋 Feel free to browse my projects or reach out for collaborations", isTyping: true }
     ]);
     setChatInput('');
     setIsTyping(false);
@@ -886,7 +1043,7 @@ export default function Home() {
         {activeSection === 'chat' && (
           <div className="max-w-2xl mx-auto">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-8 text-center">Ask me anything</h2>
+              <h2 className="text-2xl font-bold mb-8 text-center">Work or Projects? 👨🏻‍💻</h2>
               
               {/* Chat container */}
               <div className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
@@ -1014,37 +1171,54 @@ export default function Home() {
                 <div className="flex flex-wrap gap-2 justify-center">
                   <button 
                     onClick={() => handleQuickResponse('about')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui]"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                     About Me
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('skills')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui]"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
                     Skills
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('projects')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui]"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
                     Projects
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('education')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui]"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                    </svg>
                     Education
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('contact')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui]" 
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center" 
                     disabled={isInteractionDisabled}
                   >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
                     Contact
                   </button>
                 </div>
