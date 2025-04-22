@@ -408,7 +408,7 @@ const botResponses = {
         "こんにちは、今日は元気ですか？",
         "こんにちは、今日は元気ですか？"
       ],
-      about: "こんにちは、私はプトラ・ディナンティオ・ヌグロホです。私はインドネシア大学の政治学学士で、データサイエンスの愛好家です。私はデータ駆動型の洞察力を活用して、政府、技術、ビジネスなどの分野での意思決定に影響を与えることに情熱を燃やしています。データ可視化、Pythonプログラミング、機械学習などの経験を持ち、私は実世界の問題に分析能力を適用する機会を常に探しています。",
+      about: "こんにちは、私はプトラ・ディナンティオ・ヌグロホと申します。インドネシア大学の政治学を背景に持つデータサイエンス愛好家です。政府、技術、ビジネスなどのセクターにおけるデータ駆動型の意思決定に影響を与えることに情熱を持っています。",
       skills: "技術スキル：\n\n• プログラミング：Python、SQL、Django\n\n• データ可視化：Tableau、Excel\n\n• ウェブ開発：HTML、CSS\n\n• ツール：PowerPoint、Excel、Tableau\n\n\nソフトスキル：\n\n• 分析的思考：強力な研究とデータ分析能力\n\n• コミュニケーション：技術的成果を非技術者にプレゼンテーションする経験\n\n• チームワーク：チーム環境での有効な協力、特にクロス機能プロジェクトで",
       projects: "私は以下のようなプロジェクトに取り組んできました：\n• ジャカルタの空気汚染の可視化\n• 電子図書館データベース設計\n• 顧客流失予測\n• ジャカルタ青年の環境意識に関するポリシーブリーフ\n\nその他もあります！（詳細はプロジェクトセクションをご覧ください）\n\n注：Android/iPhoneを使用している場合は、ダークモードボタンの横にある3本の水平線をクリックしてください。\n\nこれらのプロジェクトについて詳しく話したい場合は、お気軽にお問い合わせください！",
       education: "教育：\n\n• 政治学学士 – インドネシア大学（2021–2025）\n\n平均成績：3.52/4.00、政府と政策分析に焦点を当てています\n\n\n• リーデン大学、デルフト大学、エラスムス大学（2024）\n\nジョイントマイナープログラム – 未来の課題研究室\n\n\n• Pacmann、データサイエンス（2023–2025）\n\nPython、機械学習、データ可視化などのコースを修了\n\n\n資格：\n\n• レスポンシブウェブデザイン – freeCodeCamp\n\n• 統計学入門 – Stanford Online\n\n• 英語（中級） – Duolingo",
@@ -1104,11 +1104,136 @@ export default function Home() {
           return; // Exit the function early
         }
       }
+      else if (
+        lowerMessage.includes("dogecoin") || 
+        lowerMessage.includes("doge") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("dogecoin"))
+      ) {
+        response = cryptoResponses.dogecoin;
+      }
+      // ... existing code for other cryptos ...
+      
+      // Check for time in specific cities
+      const timeMatch = lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i);
+      if (timeMatch) {
+        const city = timeMatch[1].toLowerCase();
+        
+        // Handle specific cities
+        if (cityTimeZones[city as keyof typeof cityTimeZones]) {
+          const cityTime = getCityTime(city);
+          if (cityTime) {
+            response = `The current time in ${city.charAt(0).toUpperCase() + city.slice(1)} is ${cityTime}.`;
+          } else {
+            response = `I apologize, but I couldn't retrieve the current time for ${city}.`;
+          }
+        } else {
+          response = `I don't have time information for ${city}. I can provide times for major cities like Amsterdam, Berlin, London, Paris, Tokyo, New York, Singapore, and Sydney.`;
+        }
+      }
       // ... rest of the existing code ...
-    }, 1000);
+
+      // Stop thinking effect and start typing effect
+      setIsTyping(false);
+      
+      // Add bot message with typing effect
+      setChatMessages(prev => [...prev, { type: 'bot', text: response, isTyping: true }]);
+      
+      // Simulate typing completion based on message length (longer messages take more time)
+      const typingTime = Math.min(1500, Math.max(800, response.length * 10));
+      typingTimeoutRef.current = setTimeout(() => {
+        setChatMessages(prev => prev.map((msg, i) => 
+          i === prev.length - 1 ? { ...msg, isTyping: false } : msg
+        ));
+      }, typingTime);
+    }, 1500); // Thinking time before starting to type
   };
 
-  // ... existing code ...
+  const handleQuickResponse = (topic: keyof typeof botResponses) => {
+    // Clear any pending timeouts first
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+      typingTimeoutRef.current = null;
+    }
+    if (thinkingTimeoutRef.current) {
+      clearTimeout(thinkingTimeoutRef.current);
+      thinkingTimeoutRef.current = null;
+    }
+    
+    // Create customized user message text based on topic
+    let userMessage = "";
+    
+    switch(topic) {
+      case 'about':
+        userMessage = "Tell me about you";
+        break;
+      case 'contact':
+        userMessage = "How can I reach you?";
+        break;
+      default:
+        userMessage = `Tell me about your ${topic}`;
+    }
+    
+    // Add user message and immediately start bot response
+    setChatMessages(prev => [...prev, { type: 'user', text: userMessage, isTyping: false }]);
+    
+    // Ensure UI updates before continuing
+    setTimeout(() => {
+      // Show thinking effect
+      setIsTyping(true);
+      
+      // Simulate thinking delay before responding
+      thinkingTimeoutRef.current = setTimeout(() => {
+        // Stop thinking effect
+        setIsTyping(false);
+        
+        // Add bot message with typing effect
+        setChatMessages(prev => [...prev, { type: 'bot', text: botResponses[topic], isTyping: true }]);
+        
+        // Simulate typing completion for bot response
+        const typingTime = Math.min(2000, Math.max(1000, botResponses[topic].length * 8));
+        typingTimeoutRef.current = setTimeout(() => {
+          setChatMessages(prev => prev.map((msg, i) => 
+            i === prev.length - 1 ? { ...msg, isTyping: false } : msg
+          ));
+        }, typingTime);
+      }, 1000); // Slightly shorter thinking time to improve responsiveness
+    }, 100);
+  };
+
+  // Reset chat function
+  const resetChat = () => {
+    // Clear any pending timeouts
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+      typingTimeoutRef.current = null;
+    }
+    if (thinkingTimeoutRef.current) {
+      clearTimeout(thinkingTimeoutRef.current);
+      thinkingTimeoutRef.current = null;
+    }
+
+    // Reset chat immediately
+    setChatMessages([
+      { type: 'bot', text: "Hello there! 👋 Feel free to browse my projects or reach out for collaborations", isTyping: true }
+    ]);
+    setChatInput('');
+    setIsTyping(false);
+    
+    // Mark initial message as finished typing after a delay
+    typingTimeoutRef.current = setTimeout(() => {
+      setChatMessages(prev => [
+        { ...prev[0], isTyping: false }
+      ]);
+    }, 1500);
+  };
+
+  const router = useRouter();
+  
+  const navigateTo = (path: string) => {
+    window.open(path, '_blank');
+  };
+
+  // ... rest of the existing code ...
 
   return (
     <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-900">
