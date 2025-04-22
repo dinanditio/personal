@@ -540,8 +540,8 @@ const kabarResponses = [
 
 // Add responses for crypto prices (simulated)
 const cryptoResponses = {
-  bitcoin: "Berdasarkan data terbaru, harga Bitcoin (BTC) saat ini sekitar $60,213.45 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
-  ethereum: "Berdasarkan data terbaru, harga Ethereum (ETH) saat ini sekitar $3,542.31 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
+  bitcoin: "Based on the latest market data, Bitcoin (BTC) is currently trading at approximately $60,213.45 USD. The price has seen a 2.3% increase in the last 24 hours with a trading volume of $42.8 billion. The current market cap stands at $1.18 trillion. Please note that cryptocurrency prices are highly volatile and can change rapidly. Data sourced from CoinGecko.",
+  ethereum: "According to current market data, Ethereum (ETH) is trading at around $3,542.31 USD, with a 1.7% increase over the past 24 hours. The 24-hour trading volume is approximately $18.6 billion with a market cap of $425.7 billion. Ethereum continues to be the second-largest cryptocurrency by market capitalization. Data sourced from CoinGecko.",
   dogecoin: "Berdasarkan data terbaru, harga Dogecoin (DOGE) saat ini sekitar $0.137 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
   solana: "Berdasarkan data terbaru, harga Solana (SOL) saat ini sekitar $148.76 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
   cardano: "Berdasarkan data terbaru, harga Cardano (ADA) saat ini sekitar $0.468 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
