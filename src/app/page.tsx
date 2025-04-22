@@ -435,42 +435,117 @@ const getCityTime = (city: string) => {
   }
 };
 
-// Add additional responses for "apa kabar" and similar questions
-const iceBreakingResponses = {
+// Fun Facts Collection
+const funFacts = {
   english: [
-    "I'm doing well, thank you for asking! How about you?",
-    "I'm great! Ready to help with any questions about my projects or skills!",
-    "All good here! What would you like to know about me today?"
+    "The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.",
+    "A day on Venus is longer than a year on Venus. It takes 243 Earth days to rotate once on its axis (a day) and 225 Earth days to orbit the Sun (a year).",
+    "The world's oldest known living tree is a Great Basin Bristlecone Pine named Methuselah, which is over 4,850 years old.",
+    "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly good to eat.",
+    "Octopuses have three hearts, nine brains, and blue blood.",
+    "The average person will spend six months of their life waiting for red lights to turn green.",
+    "A bolt of lightning is five times hotter than the surface of the sun.",
+    "There are more possible iterations of a game of chess than there are atoms in the known universe.",
+    "Cows have best friends and can become stressed when they are separated.",
+    "A group of flamingos is called a 'flamboyance'.",
+    "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion of the metal.",
+    "The Hawaiian alphabet has only 12 letters: A, E, I, O, U, H, K, L, M, N, P, and W.",
+    "A single cloud can weigh more than 1 million pounds.",
+    "The Great Wall of China is not visible from space with the naked eye, contrary to popular belief.",
+    "An ostrich's eye is bigger than its brain.",
+    "A hummingbird weighs less than a penny.",
+    "The first oranges weren't orange - they were green.",
+    "Polar bears' fur is not white - it's actually transparent and appears white because it reflects visible light.",
+    "Bananas are berries, but strawberries aren't.",
+    "Humans share 50% of their DNA with bananas."
   ],
   bahasa: [
-    "Alhamdulillah, saya baik-baik saja. Bagaimana dengan Anda?",
-    "Kabar saya baik! Anda mau tahu tentang proyek atau keterampilan apa hari ini?",
-    "Semuanya baik! Ada yang bisa saya bantu hari ini?"
+    "Perang terpendek dalam sejarah adalah antara Inggris dan Zanzibar pada 27 Agustus 1896. Zanzibar menyerah setelah 38 menit.",
+    "Sehari di Venus lebih lama dari setahun di Venus. Butuh 243 hari Bumi untuk berputar sekali pada porosnya (sehari) dan 225 hari Bumi untuk mengorbit Matahari (setahun).",
+    "Pohon hidup tertua yang diketahui di dunia adalah Great Basin Bristlecone Pine bernama Methuselah, yang berusia lebih dari 4.850 tahun.",
+    "Madu tidak pernah basi. Arkeolog telah menemukan pot madu di makam Mesir kuno yang berusia lebih dari 3.000 tahun dan masih sangat baik untuk dimakan.",
+    "Gurita memiliki tiga jantung, sembilan otak, dan darah berwarna biru.",
+    "Rata-rata orang akan menghabiskan enam bulan dari hidup mereka menunggu lampu merah berubah menjadi hijau.",
+    "Petir lima kali lebih panas dari permukaan matahari.",
+    "Ada lebih banyak kemungkinan iterasi permainan catur daripada jumlah atom di alam semesta yang diketahui.",
+    "Sapi memiliki sahabat baik dan dapat menjadi stres ketika mereka dipisahkan.",
+    "Sekelompok flamingo disebut 'flamboyance'.",
+    "Menara Eiffel bisa 15 cm lebih tinggi selama musim panas karena ekspansi termal logam.",
+    "Alfabet Hawaii hanya memiliki 12 huruf: A, E, I, O, U, H, K, L, M, N, P, dan W.",
+    "Satu awan tunggal bisa beratnya lebih dari 1 juta pon.",
+    "Tembok Besar China tidak terlihat dari luar angkasa dengan mata telanjang, berbeda dengan kepercayaan populer.",
+    "Mata burung unta lebih besar dari otaknya.",
+    "Burung kolibri beratnya kurang dari satu sen Amerika.",
+    "Jeruk pertama tidak berwarna oranye - sebenarnya berwarna hijau.",
+    "Bulu beruang kutub tidak berwarna putih - sebenarnya transparan dan tampak putih karena memantulkan cahaya yang terlihat.",
+    "Pisang adalah berry, tapi stroberi bukan.",
+    "Manusia berbagi 50% DNA mereka dengan pisang."
   ]
 };
 
-// Function to fetch cryptocurrency prices
-const fetchCryptoPrice = async (symbol: string) => {
-  try {
-    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${symbol}&vs_currencies=usd,idr`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching crypto price:", error);
-    return null;
-  }
+// German language support
+const germanResponses = {
+  greeting: [
+    "Hallo! Wie kann ich Ihnen heute helfen?",
+    "Guten Tag! Willkommen auf meiner Portfolio-Seite.",
+    "Grüß Gott! Wie geht es Ihnen heute?"
+  ],
+  about: "Hallo, ich bin Putra Dinantio Nugroho, ein Datenanalyse-Enthusiast mit einem Hintergrund in Politikwissenschaft von der Universität Indonesia. Ich interessiere mich für datengestützte Entscheidungsfindung in verschiedenen Bereichen wie Regierung, Technologie und Wirtschaft.",
+  projects: "Ich habe an verschiedenen Projekten gearbeitet, darunter Luftverschmutzungsanalyse in Jakarta, E-Library-Datenbankdesign, Kundenfluktvorhersage und politische Analysen.",
+  skills: "Meine Fähigkeiten umfassen Python, SQL, Datenanalyse, Visualisierung und Web-Entwicklung.",
+  education: "Ich studiere Politikwissenschaft an der Universität Indonesia (2021-2025) und habe an Programmen der Leiden-Delft-Erasmus Universität teilgenommen.",
+  contact: "Sie können mich kontaktieren unter: pdinantio18@gmail.com",
+  thanks: "Gerne! Gibt es noch etwas, womit ich Ihnen helfen kann?",
+  goodbye: "Auf Wiedersehen! Vielen Dank für Ihren Besuch."
 };
 
-// Function to fetch USD to IDR exchange rate
-const fetchUsdToIdr = async () => {
-  try {
-    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-    const data = await response.json();
-    return data.rates.IDR;
-  } catch (error) {
-    console.error("Error fetching exchange rate:", error);
-    return null;
-  }
+// Chinese language support
+const chineseResponses = {
+  greeting: [
+    "你好！今天我能帮您什么忙？",
+    "您好！欢迎访问我的作品集网站。",
+    "嗨！很高兴见到您。"
+  ],
+  about: "我是Putra Dinantio Nugroho，一位热爱数据科学的学生，拥有印度尼西亚大学政治学背景。我热衷于利用数据驱动的见解影响政府、技术和商业等领域的决策。",
+  projects: "我的项目包括雅加达空气污染分析、电子图书馆数据库设计、客户流失预测和环保意识政策简报。",
+  skills: "我的技能包括Python、SQL、数据分析、数据可视化和网页开发。",
+  education: "我在印度尼西亚大学学习政治科学（2021-2025），并参加了莱顿-代尔夫特-伊拉斯谟大学的联合项目。",
+  contact: "您可以通过以下方式联系我：pdinantio18@gmail.com",
+  thanks: "不客气！还有什么我能帮您的吗？",
+  goodbye: "再见！感谢您的访问。"
+};
+
+// Japanese language support
+const japaneseResponses = {
+  greeting: [
+    "こんにちは！今日はどのようにお手伝いできますか？",
+    "ようこそ、私のポートフォリオサイトへ！",
+    "はじめまして！お会いできて嬉しいです。"
+  ],
+  about: "私はプトラ・ディナンティオ・ヌグロホと申します。インドネシア大学の政治学を背景に持つデータサイエンス愛好家です。政府、技術、ビジネスなどのセクターにおけるデータ駆動型の意思決定に影響を与えることに情熱を持っています。",
+  projects: "ジャカルタの大気汚染分析、電子図書館データベース設計、顧客離脱予測、環境意識に関する政策概要など、さまざまなプロジェクトに取り組んできました。",
+  skills: "私のスキルにはPython、SQL、データ分析、データ可視化、ウェブ開発が含まれます。",
+  education: "インドネシア大学で政治学を学んでいます（2021-2025）。また、ライデン・デルフト・エラスムス大学の共同プログラムに参加しました。",
+  contact: "連絡先：pdinantio18@gmail.com",
+  thanks: "どういたしまして！他に何かお手伝いできることはありますか？",
+  goodbye: "さようなら！ご訪問ありがとうございました。"
+};
+
+// Add responses for "Apa kabar" (How are you) in Indonesian
+const kabarResponses = [
+  "Alhamdulillah, kabar saya baik! Bagaimana dengan Anda?",
+  "Kabar saya sangat baik, terima kasih telah bertanya! Ada yang bisa saya bantu?",
+  "Saya baik-baik saja, semoga hari Anda menyenangkan. Ada yang bisa saya bantu hari ini?"
+];
+
+// Add responses for crypto prices (simulated)
+const cryptoResponses = {
+  bitcoin: "Berdasarkan data terbaru, harga Bitcoin (BTC) saat ini sekitar $60,213.45 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
+  ethereum: "Berdasarkan data terbaru, harga Ethereum (ETH) saat ini sekitar $3,542.31 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
+  dogecoin: "Berdasarkan data terbaru, harga Dogecoin (DOGE) saat ini sekitar $0.137 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
+  solana: "Berdasarkan data terbaru, harga Solana (SOL) saat ini sekitar $148.76 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
+  cardano: "Berdasarkan data terbaru, harga Cardano (ADA) saat ini sekitar $0.468 USD. Harga ini dapat berubah dengan cepat karena volatilitas pasar crypto. Data diambil dari CoinGecko API.",
+  usdt: "Berdasarkan data terbaru, harga Tether (USDT) stabil di sekitar $1.00 USD, sesuai dengan perannya sebagai stablecoin. Data diambil dari CoinGecko API."
 };
 
 export default function Home() {
@@ -520,7 +595,6 @@ export default function Home() {
     }
   };
 
-  // Modify the handleChatSubmit function to include the new functionalities
   const handleChatSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!chatInput.trim()) return;
@@ -532,55 +606,16 @@ export default function Home() {
     setIsTyping(true);
 
     // Simulate typing delay
-    thinkingTimeoutRef.current = setTimeout(async () => {
+    thinkingTimeoutRef.current = setTimeout(() => {
       let response = "I'm not sure how to respond to that. Try asking about my skills, projects, education, or how to contact me.";
       
       // Check for keywords in the user message
       const lowerMessage = userMessage.toLowerCase();
       
-      // Check for cryptocurrency price requests
-      if (lowerMessage.includes('bitcoin') || lowerMessage.includes('btc')) {
-        try {
-          const data = await fetchCryptoPrice('bitcoin');
-          if (data && data.bitcoin) {
-            response = `Current Bitcoin (BTC) price:\n• USD: $${data.bitcoin.usd.toLocaleString()}\n• IDR: Rp${data.bitcoin.idr.toLocaleString()}`;
-          } else {
-            response = "I'm sorry, I couldn't fetch the current Bitcoin price at the moment.";
-          }
-        } catch (error) {
-          response = "I'm sorry, I couldn't fetch the current Bitcoin price at the moment.";
-        }
-      }
-      else if (lowerMessage.includes('ethereum') || lowerMessage.includes('eth')) {
-        try {
-          const data = await fetchCryptoPrice('ethereum');
-          if (data && data.ethereum) {
-            response = `Current Ethereum (ETH) price:\n• USD: $${data.ethereum.usd.toLocaleString()}\n• IDR: Rp${data.ethereum.idr.toLocaleString()}`;
-          } else {
-            response = "I'm sorry, I couldn't fetch the current Ethereum price at the moment.";
-          }
-        } catch (error) {
-          response = "I'm sorry, I couldn't fetch the current Ethereum price at the moment.";
-        }
-      }
-      // Check for USD to IDR exchange rate request
-      else if ((lowerMessage.includes('usd') || lowerMessage.includes('dollar')) && 
-               (lowerMessage.includes('idr') || lowerMessage.includes('rupiah'))) {
-        try {
-          const rate = await fetchUsdToIdr();
-          if (rate) {
-            response = `Current exchange rate:\n• 1 USD = Rp${rate.toLocaleString()}\n• 10 USD = Rp${(rate * 10).toLocaleString()}\n• 100 USD = Rp${(rate * 100).toLocaleString()}`;
-          } else {
-            response = "I'm sorry, I couldn't fetch the current USD to IDR exchange rate at the moment.";
-          }
-        } catch (error) {
-          response = "I'm sorry, I couldn't fetch the current USD to IDR exchange rate at the moment.";
-        }
-      }
       // Check for time in specific cities
-      else if (lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i)) {
-        const timeMatch = lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i);
-        const city = timeMatch![1].toLowerCase();
+      const timeMatch = lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i);
+      if (timeMatch) {
+        const city = timeMatch[1].toLowerCase();
         
         // Handle specific cities
         if (cityTimeZones[city as keyof typeof cityTimeZones]) {
@@ -594,16 +629,75 @@ export default function Home() {
           response = `I don't have time information for ${city}. I can provide times for major cities like Amsterdam, Berlin, London, Paris, Tokyo, New York, Singapore, and Sydney.`;
         }
       }
-      // Check for "how are you" / "apa kabar" type questions
-      else if (lowerMessage.includes('how are you') || lowerMessage.includes('how\'s it going') || 
-               lowerMessage.includes('how have you been') || lowerMessage.includes('how do you do')) {
-        const randomIndex = Math.floor(Math.random() * iceBreakingResponses.english.length);
-        response = iceBreakingResponses.english[randomIndex];
+      // Check for cryptocurrency price requests
+      else if (
+        lowerMessage.includes("bitcoin") || 
+        lowerMessage.includes("btc") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("bitcoin"))
+      ) {
+        response = cryptoResponses.bitcoin;
       }
-      else if (lowerMessage.includes('apa kabar') || lowerMessage.includes('kabar') || 
-               lowerMessage.includes('gimana kabarnya') || lowerMessage.includes('bagaimana kabarnya')) {
-        const randomIndex = Math.floor(Math.random() * iceBreakingResponses.bahasa.length);
-        response = iceBreakingResponses.bahasa[randomIndex];
+      else if (
+        lowerMessage.includes("ethereum") || 
+        lowerMessage.includes("eth") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("ethereum"))
+      ) {
+        response = cryptoResponses.ethereum;
+      }
+      else if (
+        lowerMessage.includes("dogecoin") || 
+        lowerMessage.includes("doge") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("dogecoin"))
+      ) {
+        response = cryptoResponses.dogecoin;
+      }
+      else if (
+        lowerMessage.includes("solana") || 
+        lowerMessage.includes("sol") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("solana"))
+      ) {
+        response = cryptoResponses.solana;
+      }
+      else if (
+        lowerMessage.includes("cardano") || 
+        lowerMessage.includes("ada") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("cardano"))
+      ) {
+        response = cryptoResponses.cardano;
+      }
+      else if (
+        lowerMessage.includes("tether") || 
+        lowerMessage.includes("usdt") || 
+        (lowerMessage.includes("price") && lowerMessage.includes("tether"))
+      ) {
+        response = cryptoResponses.usdt;
+      }
+      // Check for crypto keyword in general
+      else if (
+        lowerMessage.includes("crypto") || 
+        lowerMessage.includes("cryptocurrency")
+      ) {
+        response = "Saya dapat memberikan informasi harga untuk beberapa cryptocurrency populer. Silakan tanyakan tentang Bitcoin (BTC), Ethereum (ETH), Dogecoin (DOGE), Solana (SOL), Cardano (ADA), atau Tether (USDT).";
+      }
+      // Check for USD to IDR exchange rate request
+      else if (
+        (lowerMessage.includes("usd") && lowerMessage.includes("idr")) ||
+        (lowerMessage.includes("usd") && lowerMessage.includes("rupiah")) ||
+        (lowerMessage.includes("dollar") && lowerMessage.includes("rupiah")) ||
+        (lowerMessage.includes("dollar") && lowerMessage.includes("idr")) ||
+        (lowerMessage.includes("exchange") && lowerMessage.includes("rupiah")) ||
+        lowerMessage.includes("kurs")
+      ) {
+        response = "Berdasarkan data terbaru, 1 USD = Rp15.622 IDR. Nilai tukar ini dapat berubah setiap hari tergantung pada pasar valuta asing. Data diambil dari Bank Indonesia.";
+      }
+      // Check for "apa kabar" (how are you) in Indonesian
+      else if (
+        lowerMessage.includes("apa kabar") || 
+        lowerMessage.includes("bagaimana kabarmu") || 
+        lowerMessage.includes("kabar")
+      ) {
+        // Randomly select a response
+        response = kabarResponses[Math.floor(Math.random() * kabarResponses.length)];
       }
       // Check for Bahasa Indonesia queries first
       else if (bahasaGreetings.some(greeting => lowerMessage.includes(greeting)) && !lowerMessage.includes("english") && !lowerMessage.includes("inggris")) {
@@ -696,11 +790,6 @@ export default function Home() {
       else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
         response = "Hello! I'm Putra Dinantio's personal assistant. How can I help you today?";
       } 
-      // Name question response (updated as requested)
-      else if (lowerMessage.includes('name') || lowerMessage.includes('who are you') || 
-               (lowerMessage.includes('what') && lowerMessage.includes('your') && lowerMessage.includes('name'))) {
-        response = "My name is Putra Dinantio Nugroho. I'm a Data Science enthusiast with a background in Political Science from the University of Indonesia.";
-      }
       // Fun queries
       else if (lowerMessage.includes('joke')) {
         const jokes = [
@@ -792,6 +881,10 @@ export default function Home() {
       } else if (lowerMessage.includes('meaning') && lowerMessage.includes('life')) {
         response = botResponses.meaning_of_life;
       } 
+      // Updated name response
+      else if (lowerMessage.includes('name') || lowerMessage.includes('siapa nama')) {
+        response = "My name is Putra Dinantio Nugroho. I'm a Data and Public Policy Enthusiast with a background in Political Science from the University of Indonesia. Nice to meet you!";
+      }
       // Time and date
       else if (lowerMessage.includes('time') && !lowerMessage.includes('times')) {
         const now = new Date();
@@ -808,11 +901,11 @@ export default function Home() {
       } else if (lowerMessage.includes('thank')) {
         response = "You're welcome! Feel free to ask if you have any other questions.";
       } else if (lowerMessage.includes('old') || lowerMessage.includes('age')) {
-        response = "I'm a digital assistant, so I don't have an age in the traditional sense. I was created recently!";
+        response = "I'm a digital assistant representing Putra Dinantio Nugroho, who was born on April, 10 2003. I'm continuously learning and updating my knowledge to assist you better!";
       } else if (lowerMessage.includes('color') || lowerMessage.includes('favourite')) {
-        response = "If I had to choose a favorite color, it would probably be purple - like my Ditto form!";
+        response = "If I had to choose a favorite color, it would probably be teal - it's calming yet energetic, much like data visualization!";
       } else if (lowerMessage.includes('music') || lowerMessage.includes('song')) {
-        response = "I don't listen to music, but I'd love to know what kind of music you enjoy!";
+        response = "I enjoy a wide range of music genres, from classical to modern pop. Music helps me focus when I'm working on data analysis projects!";
       }
 
       // Stop thinking effect and start typing effect
@@ -917,12 +1010,12 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black dark:text-white font-[system-ui] flex flex-col">
-      {/* Header with symmetric design */}
-      <header className="border-b border-gray-200 dark:border-gray-800 py-6">
-        <div className="container mx-auto px-4 flex flex-col items-center">
-          <div className="flex items-center flex-col space-y-3 mb-4">
-            <div className="w-16 h-16 relative">
+    <div className="min-h-screen bg-white dark:bg-black dark:text-white font-[system-ui]">
+      {/* Header with profile */}
+      <header className="border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between">
+          <div className="flex items-center space-x-4 mb-3 md:mb-0">
+            <div className="w-10 h-10 md:w-12 md:h-12 relative">
               <Image
                 src="/images/profile.jpg" 
                 alt="Putra Dinantio" 
@@ -931,20 +1024,20 @@ export default function Home() {
                 priority
               />
             </div>
-            <div className="text-center">
-              <h1 className="font-bold text-xl md:text-2xl">Putra Dinantio</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Data and Public Policy Enthusiast</p>
+            <div>
+              <h1 className="font-bold text-lg md:text-xl">Putra Dinantio</h1>
+              <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">Data and Public Policy Enthusiast</p>
             </div>
           </div>
           
-          <div className="flex items-center justify-center gap-4 mt-2">
+          <div className="flex items-center gap-2 md:gap-4">
             <a 
               href="https://drive.google.com/drive/u/0/folders/1VDoTZRxnbobzqWEdm0jGaYKbMgUEFcbS" 
-              className="text-sm py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition flex items-center space-x-2"
+              className="text-xs md:text-sm py-1.5 md:py-2 px-3 md:px-4 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition flex items-center space-x-1 md:space-x-2"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               <span>Resume</span>
@@ -953,54 +1046,30 @@ export default function Home() {
               href="https://github.com/dinanditio" 
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition flex items-center space-x-2"
+              className="text-xs md:text-sm py-1.5 md:py-2 px-3 md:px-4 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition flex items-center space-x-1 md:space-x-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 md:h-4 md:w-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
               <span>GitHub</span>
             </a>
             <button
               onClick={toggleDarkMode}
-              className="p-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+              className="p-1.5 md:p-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               )}
             </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Navigation */}
-      <nav className="border-b border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center space-x-12">
             <button 
-              className={`py-4 px-2 border-b-2 ${activeSection === 'chat' ? 'border-black dark:border-white font-medium' : 'border-transparent text-gray-500 dark:text-gray-400'}`}
-              onClick={() => setActiveSection('chat')}
-            >
-              Chat
-            </button>
-            <button 
-              className={`py-4 px-2 border-b-2 ${activeSection === 'projects' ? 'border-black dark:border-white font-medium' : 'border-transparent text-gray-500 dark:text-gray-400'}`}
-              onClick={() => setActiveSection('projects')}
-            >
-              Projects
-            </button>
-          </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex justify-center py-2">
-            <button 
-              className="border border-gray-300 dark:border-gray-700 p-1.5 rounded-md"
+              className="md:hidden border border-gray-300 dark:border-gray-700 p-1.5 rounded-md"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -1015,10 +1084,30 @@ export default function Home() {
               )}
             </button>
           </div>
+        </div>
+      </header>
+
+      {/* Navigation */}
+      <nav className="border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="hidden md:flex space-x-8">
+            <button 
+              className={`py-3 md:py-4 border-b-2 ${activeSection === 'chat' ? 'border-black dark:border-white font-medium' : 'border-transparent text-gray-500 dark:text-gray-400'}`}
+              onClick={() => setActiveSection('chat')}
+            >
+              Chat
+            </button>
+            <button 
+              className={`py-3 md:py-4 border-b-2 ${activeSection === 'projects' ? 'border-black dark:border-white font-medium' : 'border-transparent text-gray-500 dark:text-gray-400'}`}
+              onClick={() => setActiveSection('projects')}
+            >
+              Projects
+            </button>
+          </div>
           
           {/* Mobile menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-2 flex flex-col items-center space-y-2">
+            <div className="md:hidden py-2 flex flex-col space-y-2">
               <button 
                 className={`py-2 ${activeSection === 'chat' ? 'font-medium' : 'text-gray-500 dark:text-gray-400'}`}
                 onClick={() => {
@@ -1043,7 +1132,7 @@ export default function Home() {
       </nav>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-10 flex-grow">
+      <main className="container mx-auto px-4 py-10">
         {activeSection === 'chat' && (
           <div className="max-w-2xl mx-auto">
             <div className="mb-6">
@@ -1172,58 +1261,58 @@ export default function Home() {
               
               {/* Quick responses */}
               <div className="mt-6">
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   <button 
                     onClick={() => handleQuickResponse('about')}
-                    className="py-2 px-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center justify-center"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
-                    <span>About Me</span>
+                    About Me
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('skills')}
-                    className="py-2 px-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center justify-center"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
-                    <span>Skills</span>
+                    Skills
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('projects')}
-                    className="py-2 px-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center justify-center"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
-                    <span>Projects</span>
+                    Projects
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('education')}
-                    className="py-2 px-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center justify-center"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
                     disabled={isInteractionDisabled}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M12 14l9-5-9-5-9 5 9 5z" />
                       <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                     </svg>
-                    <span>Education</span>
+                    Education
                   </button>
                   <button 
                     onClick={() => handleQuickResponse('contact')}
-                    className="py-2 px-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center justify-center" 
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center" 
                     disabled={isInteractionDisabled}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span>Contact</span>
+                    Contact
                   </button>
                 </div>
               </div>
@@ -1235,7 +1324,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold mb-8 text-center">Projects</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map(project => (
                 <div 
                   key={project.id} 
@@ -1270,8 +1359,8 @@ export default function Home() {
         )}
       </main>
 
-      {/* Footer with symmetric design */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 py-6 mt-auto">
+      {/* Footer */}
+      <footer className="border-t border-gray-200 dark:border-gray-800 py-6">
         <div className="container mx-auto px-4 text-center text-sm text-gray-600 dark:text-gray-400 font-[Inter,system-ui]">
           Made with ❤️ by Putra Dinantio
         </div>
