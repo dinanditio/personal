@@ -95,7 +95,7 @@ const projects = [
 const botResponses = {
   about: "Hi, I'm Putra Dinantio Nugroho, a Data Science enthusiast with a background in Political Science from the University of Indonesia. I am passionate about leveraging data-driven insights to influence decision-making across sectors such as governance, technology, and business. With experience in data visualization, Python programming, and machine learning, I am constantly looking for opportunities to apply my analytical skills to real-world problems.",
   skills: "Technical Skills:\n\n• Programming: Python, SQL, Django\n\n• Data Visualization: Tableau, Excel\n\n• Web Development: HTML, CSS\n\n• Tools: PowerPoint, Excel, Tableau\n\n\nSoft Skills:\n\n• Analytical Thinking: Strong research and data analysis skills\n\n• Communication: Experience in presenting technical findings to non-technical audiences\n\n• Teamwork: Effective collaboration in a team environment, particularly in cross-functional projects",
-  projects: "I've worked on several projects including:\n• Visualization of Air Pollution in Jakarta\n• E-Library Database Design\n• Customer Churn Prediction\n• Policy Brief on Environmental Awareness\n\nYou can ask me about any of these specific projects!",
+  projects: "I've worked on several projects, including:\n• Visualization of Air Pollution in Jakarta\n• E-Library Database Design\n• Customer Churn Prediction\n• Policy Brief on Environmental Awareness\n\nAnd more! (For additional projects, visit the Projects section)\n\nNote: If you're using an Android/iPhone, click the 3 horizontal lines next to the Dark Mode button.\n\nFeel free to contact me if you would like to discuss any of these projects in more detail!",
   education: "Education:\n\n• Bachelor of Political Science – Universitas Indonesia (2021–2025)\n\nGPA: 3.52/4.00, Focus on governance and policy analysis\n\n\n• Leiden-Delft-Erasmus University (2024)\n\nJoint Minor Program – Future Challenges Lab\n\n\n• Pacmann, Data Science (2023–2025)\n\nCompleted courses on Python, Machine Learning, and Data Visualization\n\n\nCertifications:\n\n• Responsive Web Design – freeCodeCamp\n\n• Intro to Statistics – Stanford Online\n\n• English (Upper Intermediate) – Duolingo",
   contact: "You can reach me through:\n• Email: pdinantio18@gmail.com\n• LinkedIn: https://www.linkedin.com/in/putra-dinantio-n-5651961b4/\n• Github: https://github.com/dinanditio\n• Phone: +6281528998827",
   
@@ -187,7 +187,278 @@ const botResponses = {
   
   future_cities: "Future cities will likely be 'smart cities' that use IoT sensors, AI, and data analytics to enhance efficiency and quality of life. Features may include autonomous public transportation, renewable energy microgrids, intelligent infrastructure that responds to real-time conditions, vertical farming, and mixed-use developments that reduce commuting. These cities will prioritize sustainability, resilience to climate change, and equitable access to resources and opportunities.",
   
-  remote_work: "Remote work has transformed from an occasional perk to a mainstream work arrangement, accelerated by technological advances and the COVID-19 pandemic. Benefits include flexibility, reduced commuting time, potential productivity increases, and global talent access. Challenges include maintaining company culture, collaboration difficulties, work-life balance issues, and digital fatigue. The future workplace will likely be hybrid, combining remote work flexibility with intentional in-person collaboration."
+  remote_work: "Remote work has transformed from an occasional perk to a mainstream work arrangement, accelerated by technological advances and the COVID-19 pandemic. Benefits include flexibility, reduced commuting time, potential productivity increases, and global talent access. Challenges include maintaining company culture, collaboration difficulties, work-life balance issues, and digital fatigue. The future workplace will likely be hybrid, combining remote work flexibility with intentional in-person collaboration.",
+  
+  // Fun facts
+  fun_facts: {
+    english: [
+      "The Great Wall of China is visible from space.",
+      "Honey never spoils.",
+      "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion.",
+      "Bananas are berries, but strawberries are not.",
+      "The world's largest desert is Antarctica.",
+      "The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.",
+      "The average person spends about six months of their lifetime waiting for red lights to turn green.",
+      "The world's largest living thing is a giant sequoia tree named General Sherman, which covers an area of 4,500 square meters.",
+      "The world's oldest known living tree is the Pando aspen, which is over 80,000 years old.",
+      "The world's largest snowflake was 15 inches wide and 8 inches thick.",
+      "The world's largest active volcano is Mauna Loa in Hawaii.",
+      "The world's largest ocean is the Pacific Ocean.",
+      "The world's largest island is Greenland.",
+      "The world's largest desert is the Antarctic.",
+      "The world's largest waterfall is Angel Falls in Venezuela.",
+      "The world's largest cave is the Son Doong Cave in Vietnam.",
+      "The world's largest animal is the blue whale.",
+      "The world's largest bird is the ostrich.",
+      "The world's largest reptile is the saltwater crocodile.",
+      "The world's largest amphibian is the giant salamander."
+    ],
+    bahasa: [
+      "Dinding Besar China dapat dilihat dari angkasa.",
+      "Madu tidak pernah busuk.",
+      "Menara Eiffel dapat menjadi 15 cm lebih tinggi selama musim panas karena ekspansi termal.",
+      "Pisang adalah buah, tetapi stroberi bukan.",
+      "Gurun terbesar di dunia adalah Antartika.",
+      "Perang paling pendek dalam sejarah adalah antara Britania Raya dan Zanzibar pada 27 Agustus 1896. Zanzibar menyerah setelah 38 menit.",
+      "Orang rata-rata menghabiskan sekitar enam bulan dalam hidupnya menunggu lampu merah berubah menjadi hijau.",
+      "Makhluk hidup terbesar di dunia adalah pohon sequoia raksasa bernama General Sherman, yang meliputi area 4,500 meter persegi.",
+      "Pohon tua terlama yang diketahui adalah pohon aspen Pando, yang berusia lebih dari 80,000 tahun.",
+      "Bunga salju terbesar di dunia memiliki lebar 15 inci dan ketebalan 8 inci.",
+      "Gunung api aktif terbesar di dunia adalah Mauna Loa di Hawaii.",
+      "Samudra terbesar di dunia adalah Samudra Pasifik.",
+      "Pulau terbesar di dunia adalah Greenland.",
+      "Gurun terbesar di dunia adalah Antartika.",
+      "Air terjun terbesar di dunia adalah Angel Falls di Venezuela.",
+      "Gua terbesar di dunia adalah Gua Son Doong di Vietnam.",
+      "Hewan terbesar di dunia adalah paus biru.",
+      "Burung terbesar di dunia adalah unta.",
+      "Reptil terbesar di dunia adalah buaya air laut.",
+      "Amfibi terbesar di dunia adalah salamander raksasa."
+    ]
+  },
+  
+  // Language support
+  languages: {
+    deutsch: {
+      greetings: [
+        "Hallo!",
+        "Guten Tag!",
+        "Hallo, wie geht's dir?",
+        "Hallo, schön dich zu treffen!",
+        "Hallo, was kann ich für dich tun?",
+        "Hallo, wie läuft's?",
+        "Hallo, wie geht's heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?",
+        "Hallo, wie geht's dir heute?"
+      ],
+      about: "Hallo, ich bin Putra Dinantio Nugroho, ein Data Science-Enthusiast mit einem Hintergrund in Politikwissenschaft von der Universitas Indonesia. Ich bin leidenschaftlich daran, datengetriebene Einsichten zu nutzen, um Entscheidungen in Bereichen wie Regierung, Technologie und Geschäft zu beeinflussen. Mit Erfahrung in Datenvisualisierung, Python-Programmierung und Machine Learning bin ich ständig auf der Suche nach Gelegenheiten, meine analytischen Fähigkeiten auf reale Probleme anzuwenden.",
+      skills: "Technische Fähigkeiten:\n\n• Programmierung: Python, SQL, Django\n\n• Datenvisualisierung: Tableau, Excel\n\n• Webentwicklung: HTML, CSS\n\n• Tools: PowerPoint, Excel, Tableau\n\n\nSoft Skills:\n\n• Analytisches Denken: Starke Forschungs- und Datenanalysefähigkeiten\n\n• Kommunikation: Erfahrung in der Präsentation technischer Ergebnisse für Nicht-Techniker\n\n• Teamarbeit: Effektive Zusammenarbeit in einer Teamumgebung, insbesondere bei interdisziplinären Projekten",
+      projects: "Ich habe an verschiedenen Projekten gearbeitet, darunter:\n• Datenvisualisierung der Luftverschmutzung in Jakarta\n• Datenbankdesign für eine E-Bibliothek\n• Kundenabwanderungsvorhersage\n• Policy Brief zur Umweltbewusstseinsbildung unter Jakarta-Jugendlichen\n\nUnd mehr! (Für weitere Projekte, besuchen Sie bitte die Projektsektion)\n\nHinweis: Wenn Sie ein Android/iPhone verwenden, klicken Sie auf die drei horizontalen Striche neben der Dunkelmodusschaltfläche.\n\nFühlen Sie sich frei, mich zu kontaktieren, wenn Sie über diese Projekte im Detail sprechen möchten!",
+      education: "Ausbildung:\n\n• Bachelor of Political Science – Universitas Indonesia (2021–2025)\n\nDurchschnittsnote: 3,52/4,00, Schwerpunkt auf Regierung und Politikanalyse\n\n\n• Leiden-Delft-Erasmus-Universität (2024)\n\nJoint Minor Program – Future Challenges Lab\n\n\n• Pacmann, Data Science (2023–2025)\n\nAbgeschlossene Kurse in Python, Machine Learning und Datenvisualisierung\n\n\nZertifikate:\n\n• Responsive Web Design – freeCodeCamp\n\n• Intro to Statistics – Stanford Online\n\n• English (Upper Intermediate) – Duolingo",
+      contact: "Sie können mich erreichen über:\n• E-Mail: pdinantio18@gmail.com\n• LinkedIn: https://www.linkedin.com/in/putra-dinantio-n-5651961b4/\n• Github: https://github.com/dinanditio\n• Telefon: +6281528998827",
+      thanks: [
+        "Danke für deine Frage!",
+        "Vielen Dank für deine Nachricht!",
+        "Danke für deine Unterstützung!",
+        "Vielen Dank für deine Geduld!",
+        "Danke für deine Hilfe!",
+        "Vielen Dank für deine Aufmerksamkeit!",
+        "Danke für deine Zeit!",
+        "Vielen Dank für deine Mitarbeit!",
+        "Danke für deine Freundlichkeit!",
+        "Vielen Dank für deine Unterstützung!",
+        "Danke für deine Geduld!",
+        "Vielen Dank für deine Hilfe!",
+        "Danke für deine Aufmerksamkeit!",
+        "Vielen Dank für deine Zeit!",
+        "Danke für deine Mitarbeit!",
+        "Vielen Dank für deine Freundlichkeit!",
+        "Danke für deine Unterstützung!",
+        "Vielen Dank für deine Geduld!",
+        "Danke für deine Hilfe!",
+        "Vielen Dank für deine Aufmerksamkeit!"
+      ],
+      goodbyes: [
+        "Auf Wiedersehen!",
+        "Bis bald!",
+        "Tschüss!",
+        "Bis später!",
+        "Bis dann!",
+        "Auf Wiedersehen!",
+        "Bis bald!",
+        "Tschüss!",
+        "Bis später!",
+        "Bis dann!",
+        "Auf Wiedersehen!",
+        "Bis bald!",
+        "Tschüss!",
+        "Bis später!",
+        "Bis dann!",
+        "Auf Wiedersehen!",
+        "Bis bald!",
+        "Tschüss!",
+        "Bis später!",
+        "Bis dann!"
+      ]
+    },
+    mandarin: {
+      greetings: [
+        "你好！",
+        "早上好！",
+        "你好，你今天好吗？",
+        "你好，很高兴见到你！",
+        "你好，我能为你做什么？",
+        "你好，一切顺利吗？",
+        "你好，今天怎么样？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？",
+        "你好，今天你好吗？"
+      ],
+      about: "你好，我是普特拉·迪南蒂奥·努格罗霍，一位来自印度尼西亚政治学院的数据科学爱好者。我热衷于利用数据驱动的见解来影响政府、技术和商业等领域的决策。拥有数据可视化、Python编程和机器学习等经验，我不断寻找机会将我的分析技能应用于实际问题。",
+      skills: "技术技能：\n\n• 编程：Python、SQL、Django\n\n• 数据可视化：Tableau、Excel\n\n• 网页开发：HTML、CSS\n\n• 工具：PowerPoint、Excel、Tableau\n\n\n软技能：\n\n• 分析思维：强大的研究和数据分析能力\n\n• 沟通：能够向非技术人员展示技术成果\n\n• 团队合作：在团队环境中有效合作，尤其是在跨学科项目中",
+      projects: "我参与了多个项目，包括：\n• 雅加达空气污染可视化\n• 电子图书数据库设计\n• 客户流失预测\n• 雅加达青年环境意识政策简报\n\n还有更多！（要查看更多项目，请访问项目部分）\n\n注意：如果您使用的是Android/iPhone，请点击暗色模式按钮旁边的三个水平线。\n\n如果您想详细了解这些项目，欢迎联系我！",
+      education: "教育：\n\n• 政治学学士 – 印度尼西亚大学（2021–2025）\n\n平均成绩：3.52/4.00，重点是政府和政策分析\n\n\n• 莱顿-德尔夫特-埃拉斯穆斯大学（2024）\n\n联合辅修计划 – 未来挑战实验室\n\n\n• Pacmann，数据科学（2023–2025）\n\n完成了Python、机器学习和数据可视化等课程\n\n\n证书：\n\n• 响应式网页设计 – freeCodeCamp\n\n• 统计学入门 – Stanford Online\n\n• 英语（中级） – Duolingo",
+      contact: "您可以通过以下方式联系我：\n• 电子邮件：pdinantio18@gmail.com\n• LinkedIn：https://www.linkedin.com/in/putra-dinantio-n-5651961b4/\n• Github：https://github.com/dinanditio\n• 电话：+6281528998827",
+      thanks: [
+        "谢谢您的提问！",
+        "感谢您的留言！",
+        "感谢您的支持！",
+        "感谢您的耐心！",
+        "感谢您的帮助！",
+        "感谢您的关注！",
+        "感谢您的时间！",
+        "感谢您的参与！",
+        "感谢您的友好！",
+        "感谢您的支持！",
+        "感谢您的耐心！",
+        "感谢您的帮助！",
+        "感谢您的关注！",
+        "感谢您的时间！",
+        "感谢您的参与！",
+        "感谢您的友好！",
+        "感谢您的支持！",
+        "感谢您的耐心！",
+        "感谢您的帮助！",
+        "感谢您的关注！"
+      ],
+      goodbyes: [
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！",
+        "再见！"
+      ]
+    },
+    japanese: {
+      greetings: [
+        "こんにちは！",
+        "おはようございます！",
+        "こんにちは、元気ですか？",
+        "こんにちは、会えて嬉しいです！",
+        "こんにちは、何かお手伝いできますか？",
+        "こんにちは、順調ですか？",
+        "こんにちは、今日はどうですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？",
+        "こんにちは、今日は元気ですか？"
+      ],
+      about: "こんにちは、私はプトラ・ディナンティオ・ヌグロホです。私はインドネシア大学の政治学学士で、データサイエンスの愛好家です。私はデータ駆動型の洞察力を活用して、政府、技術、ビジネスなどの分野での意思決定に影響を与えることに情熱を燃やしています。データ可視化、Pythonプログラミング、機械学習などの経験を持ち、私は実世界の問題に分析能力を適用する機会を常に探しています。",
+      skills: "技術スキル：\n\n• プログラミング：Python、SQL、Django\n\n• データ可視化：Tableau、Excel\n\n• ウェブ開発：HTML、CSS\n\n• ツール：PowerPoint、Excel、Tableau\n\n\nソフトスキル：\n\n• 分析的思考：強力な研究とデータ分析能力\n\n• コミュニケーション：技術的成果を非技術者にプレゼンテーションする経験\n\n• チームワーク：チーム環境での有効な協力、特にクロス機能プロジェクトで",
+      projects: "私は以下のようなプロジェクトに取り組んできました：\n• ジャカルタの空気汚染の可視化\n• 電子図書館データベース設計\n• 顧客流失予測\n• ジャカルタ青年の環境意識に関するポリシーブリーフ\n\nその他もあります！（詳細はプロジェクトセクションをご覧ください）\n\n注：Android/iPhoneを使用している場合は、ダークモードボタンの横にある3本の水平線をクリックしてください。\n\nこれらのプロジェクトについて詳しく話したい場合は、お気軽にお問い合わせください！",
+      education: "教育：\n\n• 政治学学士 – インドネシア大学（2021–2025）\n\n平均成績：3.52/4.00、政府と政策分析に焦点を当てています\n\n\n• リーデン大学、デルフト大学、エラスムス大学（2024）\n\nジョイントマイナープログラム – 未来の課題研究室\n\n\n• Pacmann、データサイエンス（2023–2025）\n\nPython、機械学習、データ可視化などのコースを修了\n\n\n資格：\n\n• レスポンシブウェブデザイン – freeCodeCamp\n\n• 統計学入門 – Stanford Online\n\n• 英語（中級） – Duolingo",
+      contact: "以下の方法でお問い合わせください：\n• メール：pdinantio18@gmail.com\n• LinkedIn：https://www.linkedin.com/in/putra-dinantio-n-5651961b4/\n• Github：https://github.com/dinanditio\n• 電話：+6281528998827",
+      thanks: [
+        "質問ありがとうございます！",
+        "メッセージありがとうございます！",
+        "サポートありがとうございます！",
+        "ご協力ありがとうございます！",
+        "ご協力ありがとうございます！",
+        "ご注意ありがとうございます！",
+        "ご時間ありがとうございます！",
+        "ご参加ありがとうございます！",
+        "ご親切ありがとうございます！",
+        "サポートありがとうございます！",
+        "ご協力ありがとうございます！",
+        "ご協力ありがとうございます！",
+        "ご注意ありがとうございます！",
+        "ご時間ありがとうございます！",
+        "ご参加ありがとうございます！",
+        "ご親切ありがとうございます！",
+        "サポートありがとうございます！",
+        "ご協力ありがとうございます！",
+        "ご協力ありがとうございます！",
+        "ご注意ありがとうございます！"
+      ],
+      goodbyes: [
+        "さようなら！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "さようなら！",
+        "またね！",
+        "またね！"
+      ]
+    }
+  }
 };
 
 // Add Bahasa Indonesia responses
@@ -409,6 +680,25 @@ const cityTimeZones = {
   newyork: 'America/New_York',
   singapore: 'Asia/Singapore',
   sydney: 'Australia/Sydney',
+  mecca: 'Asia/Mecca',
+  mekkah: 'Asia/Mecca',
+  makkah: 'Asia/Mecca',
+  newyork: 'America/New_York',
+  tokyo: 'Asia/Tokyo',
+  ottawa: 'America/Ottawa',
+  sydney: 'Australia/Sydney',
+  beijing: 'Asia/Shanghai',
+  delhi: 'Asia/Kolkata',
+  riodejaneiro: 'America/Sao_Paulo',
+  moscow: 'Europe/Moscow',
+  dubai: 'Asia/Dubai',
+  istanbul: 'Europe/Istanbul',
+  johannesburg: 'Africa/Johannesburg',
+  cairo: 'Africa/Cairo',
+  losangeles: 'America/Los_Angeles',
+  chicago: 'America/Chicago',
+  rome: 'Europe/Rome',
+  bangkok: 'Asia/Bangkok'
 };
 
 const getCityTime = (city: string) => {
@@ -438,48 +728,48 @@ const getCityTime = (city: string) => {
 // Fun Facts Collection
 const funFacts = {
   english: [
+    "The Great Wall of China is visible from space.",
+    "Honey never spoils.",
+    "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion.",
+    "Bananas are berries, but strawberries are not.",
+    "The world's largest desert is Antarctica.",
     "The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.",
-    "A day on Venus is longer than a year on Venus. It takes 243 Earth days to rotate once on its axis (a day) and 225 Earth days to orbit the Sun (a year).",
-    "The world's oldest known living tree is a Great Basin Bristlecone Pine named Methuselah, which is over 4,850 years old.",
-    "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly good to eat.",
-    "Octopuses have three hearts, nine brains, and blue blood.",
-    "The average person will spend six months of their life waiting for red lights to turn green.",
-    "A bolt of lightning is five times hotter than the surface of the sun.",
-    "There are more possible iterations of a game of chess than there are atoms in the known universe.",
-    "Cows have best friends and can become stressed when they are separated.",
-    "A group of flamingos is called a 'flamboyance'.",
-    "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion of the metal.",
-    "The Hawaiian alphabet has only 12 letters: A, E, I, O, U, H, K, L, M, N, P, and W.",
-    "A single cloud can weigh more than 1 million pounds.",
-    "The Great Wall of China is not visible from space with the naked eye, contrary to popular belief.",
-    "An ostrich's eye is bigger than its brain.",
-    "A hummingbird weighs less than a penny.",
-    "The first oranges weren't orange - they were green.",
-    "Polar bears' fur is not white - it's actually transparent and appears white because it reflects visible light.",
-    "Bananas are berries, but strawberries aren't.",
-    "Humans share 50% of their DNA with bananas."
+    "The average person spends about six months of their lifetime waiting for red lights to turn green.",
+    "The world's largest living thing is a giant sequoia tree named General Sherman, which covers an area of 4,500 square meters.",
+    "The world's oldest known living tree is the Pando aspen, which is over 80,000 years old.",
+    "The world's largest snowflake was 15 inches wide and 8 inches thick.",
+    "The world's largest active volcano is Mauna Loa in Hawaii.",
+    "The world's largest ocean is the Pacific Ocean.",
+    "The world's largest island is Greenland.",
+    "The world's largest desert is the Antarctic.",
+    "The world's largest waterfall is Angel Falls in Venezuela.",
+    "The world's largest cave is the Son Doong Cave in Vietnam.",
+    "The world's largest animal is the blue whale.",
+    "The world's largest bird is the ostrich.",
+    "The world's largest reptile is the saltwater crocodile.",
+    "The world's largest amphibian is the giant salamander."
   ],
   bahasa: [
-    "Perang terpendek dalam sejarah adalah antara Inggris dan Zanzibar pada 27 Agustus 1896. Zanzibar menyerah setelah 38 menit.",
-    "Sehari di Venus lebih lama dari setahun di Venus. Butuh 243 hari Bumi untuk berputar sekali pada porosnya (sehari) dan 225 hari Bumi untuk mengorbit Matahari (setahun).",
-    "Pohon hidup tertua yang diketahui di dunia adalah Great Basin Bristlecone Pine bernama Methuselah, yang berusia lebih dari 4.850 tahun.",
-    "Madu tidak pernah basi. Arkeolog telah menemukan pot madu di makam Mesir kuno yang berusia lebih dari 3.000 tahun dan masih sangat baik untuk dimakan.",
-    "Gurita memiliki tiga jantung, sembilan otak, dan darah berwarna biru.",
-    "Rata-rata orang akan menghabiskan enam bulan dari hidup mereka menunggu lampu merah berubah menjadi hijau.",
-    "Petir lima kali lebih panas dari permukaan matahari.",
-    "Ada lebih banyak kemungkinan iterasi permainan catur daripada jumlah atom di alam semesta yang diketahui.",
-    "Sapi memiliki sahabat baik dan dapat menjadi stres ketika mereka dipisahkan.",
-    "Sekelompok flamingo disebut 'flamboyance'.",
-    "Menara Eiffel bisa 15 cm lebih tinggi selama musim panas karena ekspansi termal logam.",
-    "Alfabet Hawaii hanya memiliki 12 huruf: A, E, I, O, U, H, K, L, M, N, P, dan W.",
-    "Satu awan tunggal bisa beratnya lebih dari 1 juta pon.",
-    "Tembok Besar China tidak terlihat dari luar angkasa dengan mata telanjang, berbeda dengan kepercayaan populer.",
-    "Mata burung unta lebih besar dari otaknya.",
-    "Burung kolibri beratnya kurang dari satu sen Amerika.",
-    "Jeruk pertama tidak berwarna oranye - sebenarnya berwarna hijau.",
-    "Bulu beruang kutub tidak berwarna putih - sebenarnya transparan dan tampak putih karena memantulkan cahaya yang terlihat.",
-    "Pisang adalah berry, tapi stroberi bukan.",
-    "Manusia berbagi 50% DNA mereka dengan pisang."
+    "Dinding Besar China dapat dilihat dari angkasa.",
+    "Madu tidak pernah busuk.",
+    "Menara Eiffel dapat menjadi 15 cm lebih tinggi selama musim panas karena ekspansi termal.",
+    "Pisang adalah buah, tetapi stroberi bukan.",
+    "Gurun terbesar di dunia adalah Antartika.",
+    "Perang paling pendek dalam sejarah adalah antara Britania Raya dan Zanzibar pada 27 Agustus 1896. Zanzibar menyerah setelah 38 menit.",
+    "Orang rata-rata menghabiskan sekitar enam bulan dalam hidupnya menunggu lampu merah berubah menjadi hijau.",
+    "Makhluk hidup terbesar di dunia adalah pohon sequoia raksasa bernama General Sherman, yang meliputi area 4,500 meter persegi.",
+    "Pohon tua terlama yang diketahui adalah pohon aspen Pando, yang berusia lebih dari 80,000 tahun.",
+    "Bunga salju terbesar di dunia memiliki lebar 15 inci dan ketebalan 8 inci.",
+    "Gunung api aktif terbesar di dunia adalah Mauna Loa di Hawaii.",
+    "Samudra terbesar di dunia adalah Samudra Pasifik.",
+    "Pulau terbesar di dunia adalah Greenland.",
+    "Gurun terbesar di dunia adalah Antartika.",
+    "Air terjun terbesar di dunia adalah Angel Falls di Venezuela.",
+    "Gua terbesar di dunia adalah Gua Son Doong di Vietnam.",
+    "Hewan terbesar di dunia adalah paus biru.",
+    "Burung terbesar di dunia adalah unta.",
+    "Reptil terbesar di dunia adalah buaya air laut.",
+    "Amfibi terbesar di dunia adalah salamander raksasa."
   ]
 };
 
@@ -507,7 +797,7 @@ const chineseResponses = {
     "嗨！很高兴见到您。"
   ],
   about: "我是Putra Dinantio Nugroho，一位热爱数据科学的学生，拥有印度尼西亚大学政治学背景。我热衷于利用数据驱动的见解影响政府、技术和商业等领域的决策。",
-  projects: "我的项目包括雅加达空气污染分析、电子图书馆数据库设计、客户流失预测和环保意识政策简报。",
+  projects: "我的项目包括雅加达空气污染分析、电子図书馆数据库设计、客户流失预测和环保意识政策简报。",
   skills: "我的技能包括Python、SQL、数据分析、数据可视化和网页开发。",
   education: "我在印度尼西亚大学学习政治科学（2021-2025），并参加了莱顿-代尔夫特-伊拉斯谟大学的联合项目。",
   contact: "您可以通过以下方式联系我：pdinantio18@gmail.com",
@@ -563,6 +853,55 @@ export default function Home() {
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const thinkingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Function to fetch cryptocurrency data from CoinGecko API
+  const fetchCryptoPrice = async (coinId: string) => {
+    try {
+      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd,idr&include_24hr_change=true&include_market_cap=true&include_24hr_vol=true`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data && data[coinId]) {
+        const priceInfo = data[coinId];
+        const usdPrice = priceInfo.usd;
+        const idrPrice = priceInfo.idr;
+        const usdChange = priceInfo.usd_24h_change ? priceInfo.usd_24h_change.toFixed(2) : 'N/A';
+        const marketCap = priceInfo.usd_market_cap ? (priceInfo.usd_market_cap / 1000000000).toFixed(2) : 'N/A';
+        const volume = priceInfo.usd_24h_vol ? (priceInfo.usd_24h_vol / 1000000000).toFixed(2) : 'N/A';
+        
+        // Format numbers with commas
+        const formattedUsdPrice = usdPrice.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        
+        const formattedIdrPrice = idrPrice.toLocaleString('id-ID', {
+          style: 'currency',
+          currency: 'IDR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        });
+        
+        // Construct response based on coin
+        if (coinId === 'bitcoin') {
+          return `Based on real-time data from CoinGecko, Bitcoin (BTC) is currently trading at ${formattedUsdPrice} (${formattedIdrPrice}). The price has ${parseFloat(usdChange) >= 0 ? 'increased' : 'decreased'} by ${Math.abs(parseFloat(usdChange))}% in the last 24 hours. The current market cap is $${marketCap} billion with a 24-hour trading volume of $${volume} billion. Cryptocurrency prices are highly volatile and subject to change rapidly.`;
+        } else if (coinId === 'ethereum') {
+          return `According to real-time data from CoinGecko, Ethereum (ETH) is currently trading at ${formattedUsdPrice} (${formattedIdrPrice}). The price has ${parseFloat(usdChange) >= 0 ? 'increased' : 'decreased'} by ${Math.abs(parseFloat(usdChange))}% in the last 24 hours. The current market cap is $${marketCap} billion with a 24-hour trading volume of $${volume} billion. Ethereum remains the second-largest cryptocurrency by market capitalization.`;
+        }
+      }
+      
+      return `I couldn't fetch the latest ${coinId} price at the moment. Cryptocurrency markets are active 24/7, and prices can change rapidly. Please try again in a moment.`;
+    } catch (error) {
+      console.error('Error fetching crypto price:', error);
+      return `I'm having trouble accessing the latest cryptocurrency data right now. Please try again later.`;
+    }
+  };
+
   // Determine if interaction should be disabled (while bot is typing or thinking)
   const isInteractionDisabled = isTyping || chatMessages.some(msg => msg.isTyping);
 
@@ -606,547 +945,234 @@ export default function Home() {
     setIsTyping(true);
 
     // Simulate typing delay
-    thinkingTimeoutRef.current = setTimeout(() => {
+    thinkingTimeoutRef.current = setTimeout(async () => {
       let response = "I'm not sure how to respond to that. Try asking about my skills, projects, education, or how to contact me.";
       
       // Check for keywords in the user message
       const lowerMessage = userMessage.toLowerCase();
       
-      // Check for time in specific cities
-      const timeMatch = lowerMessage.match(/time\s+in\s+([a-z]+)(\?)?/i);
-      if (timeMatch) {
-        const city = timeMatch[1].toLowerCase();
-        
-        // Handle specific cities
-        if (cityTimeZones[city as keyof typeof cityTimeZones]) {
-          const cityTime = getCityTime(city);
-          if (cityTime) {
-            response = `The current time in ${city.charAt(0).toUpperCase() + city.slice(1)} is ${cityTime}.`;
-          } else {
-            response = `I apologize, but I couldn't retrieve the current time for ${city}.`;
-          }
-        } else {
-          response = `I don't have time information for ${city}. I can provide times for major cities like Amsterdam, Berlin, London, Paris, Tokyo, New York, Singapore, and Sydney.`;
-        }
-      }
-      // Check for cryptocurrency price requests
-      else if (
+      // Check for cryptocurrency price requests with real-time API
+      if (
         lowerMessage.includes("bitcoin") || 
         lowerMessage.includes("btc") || 
         (lowerMessage.includes("price") && lowerMessage.includes("bitcoin"))
       ) {
-        response = cryptoResponses.bitcoin;
+        // Show typing indicator
+        setIsTyping(false);
+        setChatMessages(prev => [...prev, { 
+          type: 'bot', 
+          text: "Fetching the latest Bitcoin price data for you...", 
+          isTyping: true 
+        }]);
+        
+        try {
+          // Fetch real-time Bitcoin price from CoinGecko
+          const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,idr&include_24hr_change=true&include_market_cap=true&include_24hr_vol=true');
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch Bitcoin data');
+          }
+          
+          const data = await response.json();
+          
+          if (data && data.bitcoin) {
+            const btcData = data.bitcoin;
+            const usdPrice = btcData.usd;
+            const idrPrice = btcData.idr;
+            const change24h = btcData.usd_24h_change ? btcData.usd_24h_change.toFixed(2) : 'N/A';
+            const marketCap = btcData.usd_market_cap ? (btcData.usd_market_cap / 1000000000).toFixed(2) : 'N/A';
+            const volume = btcData.usd_24h_vol ? (btcData.usd_24h_vol / 1000000000).toFixed(2) : 'N/A';
+            
+            // Format numbers with commas
+            const formattedUsdPrice = usdPrice.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            });
+            
+            const formattedIdrPrice = idrPrice.toLocaleString('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0
+            });
+            
+            const btcResponse = `Based on real-time data from CoinGecko, Bitcoin (BTC) is currently trading at ${formattedUsdPrice} (${formattedIdrPrice}). The price has ${parseFloat(change24h) >= 0 ? 'increased' : 'decreased'} by ${Math.abs(parseFloat(change24h))}% in the last 24 hours. The current market cap is $${marketCap} billion with a 24-hour trading volume of $${volume} billion. Cryptocurrency prices are highly volatile and subject to change rapidly.`;
+            
+            // Update the last message with the real data
+            setChatMessages(prev => {
+              const updated = [...prev];
+              updated[updated.length - 1] = { 
+                type: 'bot', 
+                text: btcResponse, 
+                isTyping: false 
+              };
+              return updated;
+            });
+            
+            return; // Exit the function early
+          }
+        } catch (error) {
+          console.error('Error fetching Bitcoin price:', error);
+          // Show error message
+          setChatMessages(prev => {
+            const updated = [...prev];
+            updated[updated.length - 1] = { 
+              type: 'bot', 
+              text: "Sorry, I couldn't fetch the latest Bitcoin price data. Please try again later.", 
+              isTyping: false 
+            };
+            return updated;
+          });
+          return; // Exit the function early
+        }
       }
       else if (
         lowerMessage.includes("ethereum") || 
         lowerMessage.includes("eth") || 
         (lowerMessage.includes("price") && lowerMessage.includes("ethereum"))
       ) {
-        response = cryptoResponses.ethereum;
-      }
-      else if (
-        lowerMessage.includes("dogecoin") || 
-        lowerMessage.includes("doge") || 
-        (lowerMessage.includes("price") && lowerMessage.includes("dogecoin"))
-      ) {
-        response = cryptoResponses.dogecoin;
-      }
-      else if (
-        lowerMessage.includes("solana") || 
-        lowerMessage.includes("sol") || 
-        (lowerMessage.includes("price") && lowerMessage.includes("solana"))
-      ) {
-        response = cryptoResponses.solana;
-      }
-      else if (
-        lowerMessage.includes("cardano") || 
-        lowerMessage.includes("ada") || 
-        (lowerMessage.includes("price") && lowerMessage.includes("cardano"))
-      ) {
-        response = cryptoResponses.cardano;
-      }
-      else if (
-        lowerMessage.includes("tether") || 
-        lowerMessage.includes("usdt") || 
-        (lowerMessage.includes("price") && lowerMessage.includes("tether"))
-      ) {
-        response = cryptoResponses.usdt;
-      }
-      // Check for crypto keyword in general
-      else if (
-        lowerMessage.includes("crypto") || 
-        lowerMessage.includes("cryptocurrency")
-      ) {
-        response = "Saya dapat memberikan informasi harga untuk beberapa cryptocurrency populer. Silakan tanyakan tentang Bitcoin (BTC), Ethereum (ETH), Dogecoin (DOGE), Solana (SOL), Cardano (ADA), atau Tether (USDT).";
-      }
-      // Check for USD to IDR exchange rate request
-      else if (
-        (lowerMessage.includes("usd") && lowerMessage.includes("idr")) ||
-        (lowerMessage.includes("usd") && lowerMessage.includes("rupiah")) ||
-        (lowerMessage.includes("dollar") && lowerMessage.includes("rupiah")) ||
-        (lowerMessage.includes("dollar") && lowerMessage.includes("idr")) ||
-        (lowerMessage.includes("exchange") && lowerMessage.includes("rupiah")) ||
-        lowerMessage.includes("kurs")
-      ) {
-        response = "Berdasarkan data terbaru, 1 USD = Rp15.622 IDR. Nilai tukar ini dapat berubah setiap hari tergantung pada pasar valuta asing. Data diambil dari Bank Indonesia.";
-      }
-      // Check for "apa kabar" (how are you) in Indonesian
-      else if (
-        lowerMessage.includes("apa kabar") || 
-        lowerMessage.includes("bagaimana kabarmu") || 
-        lowerMessage.includes("kabar")
-      ) {
-        // Randomly select a response
-        response = kabarResponses[Math.floor(Math.random() * kabarResponses.length)];
-      }
-      // Check for Bahasa Indonesia queries first
-      else if (bahasaGreetings.some(greeting => lowerMessage.includes(greeting)) && !lowerMessage.includes("english") && !lowerMessage.includes("inggris")) {
-        // Respond to Bahasa greetings
-        const greetingResponses = [
-          "Halo! Ada yang bisa saya bantu?",
-          "Hai! Senang bertemu dengan Anda. Apa yang ingin Anda ketahui?",
-          "Selamat datang! Bagaimana saya bisa membantu Anda hari ini?"
-        ];
-        response = greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
-      } 
-      // Indonesian responses
-      else if (lowerMessage.includes("tentang") || lowerMessage.includes("siapa kamu")) {
-        response = bahasaResponses.tentang;
-      } else if (lowerMessage.includes("keahlian") || lowerMessage.includes("bisa apa")) {
-        response = bahasaResponses.keahlian;
-      } else if (lowerMessage.includes("proyek") || lowerMessage.includes("karya")) {
-        response = bahasaResponses.proyek;
-      } else if (lowerMessage.includes("pendidikan") || lowerMessage.includes("kuliah") || lowerMessage.includes("sekolah")) {
-        response = bahasaResponses.pendidikan;
-      } else if (lowerMessage.includes("kontak") || lowerMessage.includes("hubungi") || lowerMessage.includes("email")) {
-        response = bahasaResponses.kontak;
-      } else if (lowerMessage.includes("terima kasih") || lowerMessage.includes("makasih")) {
-        response = "Sama-sama! Senang bisa membantu Anda.";
-      } else if (lowerMessage.includes("jakarta") && (lowerMessage.includes("ibukota") || lowerMessage.includes("ibu kota"))) {
-        response = "Jakarta adalah ibu kota Indonesia dan merupakan kota metropolitan terbesar di Asia Tenggara.";
-      } else if (lowerMessage.includes("indonesia") && lowerMessage.includes("merdeka")) {
-        response = "Indonesia memproklamasikan kemerdekaannya pada tanggal 17 Agustus 1945.";
-      } else if (lowerMessage.includes("fakta") && lowerMessage.includes("indonesia")) {
-        response = bahasaResponses.fakta_indonesia;
-      } else if (lowerMessage.includes("lelucon") || lowerMessage.includes("lucu") || lowerMessage.includes("joke")) {
-        response = bahasaResponses.lelucon;
-      } else if (lowerMessage.includes("makanan") && lowerMessage.includes("favorit")) {
-        response = bahasaResponses.makanan_favorit;
-      } else if ((lowerMessage.includes("kopi") || lowerMessage.includes("teh")) && lowerMessage.includes("atau")) {
-        response = bahasaResponses.kopi_atau_teh;
-      } else if (lowerMessage.includes("akhir pekan") || lowerMessage.includes("weekend")) {
-        response = bahasaResponses.akhir_pekan;
-      } else if (lowerMessage.includes("presiden pertama") || lowerMessage.includes("soekarno")) {
-        response = "Soekarno adalah presiden pertama Indonesia dan salah satu proklamator kemerdekaan! Beliau adalah pemimpin yang karismatik dan visioner dalam perjuangan kemerdekaan Indonesia. 🇮🇩";
-      } else if (lowerMessage.includes("bhineka tunggal ika") || lowerMessage.includes("bhinneka")) {
-        response = "Bhineka Tunggal Ika artinya 'Berbeda-beda tetapi tetap satu jua'. Ini adalah semboyan nasional Indonesia yang mencerminkan keberagaman budaya, bahasa, agama, dan etnis yang disatukan dalam identitas nasional Indonesia. Moto ini berasal dari kakawin Sutasoma karya Mpu Tantular dari abad ke-14. 🦅";
-      } else if (lowerMessage.includes("jadi developer") || lowerMessage.includes("menjadi programmer")) {
-        response = "Cara jadi developer? Konsistensi adalah kuncinya! \n\n1. Bangun pagi\n2. Siapkan kopi/teh\n3. Belajar coding (Python sangat bagus untuk data science!)\n4. Kerjakan project nyata\n5. Bergabung dengan komunitas\n6. Ulangi setiap hari! ☕💻";
-      } else if ((lowerMessage.includes("ai") && lowerMessage.includes("ml")) || 
-                (lowerMessage.includes("artificial") && lowerMessage.includes("machine"))) {
-        if (lowerMessage.includes("bahasa") || lowerMessage.includes("indonesia")) {
-          response = bahasaResponses.ai_vs_ml_id;
-        } else {
-          response = botResponses.ai_vs_ml;
-        }
-      } else if (lowerMessage.includes("blockchain")) {
-        if (lowerMessage.includes("bahasa") || lowerMessage.includes("indonesia")) {
-          response = bahasaResponses.blockchain_id;
-        } else {
-          response = botResponses.blockchain;
-        }
-      } 
-      // Handle math questions with a simple explanation instead of calculations
-      else if (lowerMessage.match(/what is|calculate|compute|solve|math|plus|minus|times|multiply|divide|divided by|addition|subtraction|multiplication|division|sqrt|square root|area|perimeter|circumference|equation|formula/i)) {
-        response = "Mohon maaf, saya belum dapat melakukan perhitungan matematika dengan baik. Sebaiknya gunakan kalkulator atau aplikasi khusus matematika untuk perhitungan yang akurat.";
-      } 
-      // English responses for general queries
-      else if (lowerMessage.includes('about') || lowerMessage.includes('who are you') || lowerMessage.includes('tell me about yourself')) {
-        response = botResponses.about;
-      } else if (lowerMessage.includes('skill') || lowerMessage.includes('what can you do')) {
-        response = botResponses.skills;
-      } else if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
-        response = botResponses.projects;
-      } else if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('degree')) {
-        response = botResponses.education;
-      } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('email')) {
-        response = botResponses.contact;
-      } 
-      // Project-specific responses
-      else if (lowerMessage.includes('pollution') || lowerMessage.includes('air') || lowerMessage.includes('jakarta')) {
-        response = "My Air Pollution analysis project visualizes pollution data in Jakarta to support environmental policy decisions.";
-      } else if (lowerMessage.includes('titanic') || lowerMessage.includes('survival')) {
-        response = "My Titanic Survival Prediction project applies machine learning algorithms to predict passenger survival based on factors like age, gender, and class using the Kaggle dataset.";
-      } else if (lowerMessage.includes('jual') || lowerMessage.includes('mobil') || lowerMessage.includes('car')) {
-        response = "The Jual Cepat Mobil Bekas project focuses on creating a relational database for a used car marketplace with an efficient database schema for filtering cars based on various attributes.";
-      } else if (lowerMessage.includes('churn') || lowerMessage.includes('customer')) {
-        response = "My Customer Churn Prediction project uses Logistic Regression to analyze telecom customer data and identify factors leading to customer attrition.";
-      } else if (lowerMessage.includes('library') || lowerMessage.includes('e-library')) {
-        response = "My E-Library Database project designs a relational database model with an entity relationship diagram (ERD) to efficiently organize and access digital library resources.";
-      } else if (lowerMessage.includes('youth') || lowerMessage.includes('environmental') || lowerMessage.includes('awareness')) {
-        response = "My Policy Brief analyzes how social media platforms can be leveraged to strengthen environmental awareness among Jakarta's youth population.";  
-      } 
-      // Basic greetings
-      else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-        response = "Hello! I'm Putra Dinantio's personal assistant. How can I help you today?";
-      } 
-      // Fun queries
-      else if (lowerMessage.includes('joke')) {
-        const jokes = [
-          "Why do programmers prefer dark mode? Because light attracts bugs!",
-          "Why was the math book sad? Because it had too many problems.",
-          "Why did the scarecrow win an award? Because he was outstanding in his field!",
-          "What did one wall say to the other wall? I'll meet you at the corner!",
-          "Why don't scientists trust atoms? Because they make up everything!",
-          "How does a penguin build its house? Igloos it together!",
-          "Why couldn't the bicycle stand up by itself? It was two tired!",
-          "Why do we tell actors to 'break a leg?' Because every play has a cast!"
-        ];
-        response = jokes[Math.floor(Math.random() * jokes.length)];
-      } 
-      // Tech trends and knowledge
-      else if (lowerMessage.includes('tech') && lowerMessage.includes('trend')) {
-        response = botResponses.tech_trends;
-      } else if ((lowerMessage.includes('quantum') && lowerMessage.includes('comput')) || 
-               (lowerMessage.includes('explain') && lowerMessage.includes('quantum'))) {
-        response = botResponses.quantum_computing;
-      } else if ((lowerMessage.includes('http') && lowerMessage.includes('https')) || 
-               (lowerMessage.includes('difference') && lowerMessage.includes('http'))) {
-        response = botResponses.http_vs_https;
-      } else if (lowerMessage.includes('neural') && lowerMessage.includes('network')) {
-        response = botResponses.neural_networks;
-      } 
-      // Nature and science
-      else if (lowerMessage.includes('northern') && lowerMessage.includes('light')) {
-        response = botResponses.northern_lights;
-      } else if ((lowerMessage.includes('moon') && lowerMessage.includes('land')) || 
-               (lowerMessage.includes('countries') && lowerMessage.includes('moon'))) {
-        response = botResponses.moon_landings;
-      } else if (lowerMessage.includes('most') && lowerMessage.includes('language')) {
-        response = botResponses.world_language;
-      } else if (lowerMessage.includes('sun') && (lowerMessage.includes('core') || lowerMessage.includes('hot'))) {
-        response = botResponses.sun_core;
-      } else if (lowerMessage.includes('smallest') && lowerMessage.includes('country')) {
-        response = botResponses.smallest_country;
-      } 
-      // Fun personality questions
-      else if (lowerMessage.includes('spirit') && lowerMessage.includes('animal')) {
-        response = botResponses.spirit_animal;
-      } else if ((lowerMessage.includes('coffee') || lowerMessage.includes('tea')) && lowerMessage.includes('or')) {
-        response = botResponses.coffee_or_tea;
-      } else if (lowerMessage.includes('fun') && lowerMessage.includes('fact')) {
-        response = botResponses.fun_fact;
-      } else if (lowerMessage.includes('sing') || (lowerMessage.includes('favorite') && lowerMessage.includes('song'))) {
-        response = botResponses.favorite_song;
-      } else if (lowerMessage.includes('favorite') && lowerMessage.includes('meme')) {
-        response = botResponses.favorite_meme;
-      } 
-      // Games and interactive
-      else if (lowerMessage.includes('rock') && lowerMessage.includes('paper') && lowerMessage.includes('scissors')) {
-        response = botResponses.rock_paper_scissors;
-      } else if (lowerMessage.includes('guess') && lowerMessage.includes('number')) {
-        response = botResponses.guess_number;
-      } else if (lowerMessage.includes('random') && lowerMessage.includes('quote')) {
-        response = botResponses.random_quote;
-      } 
-      // Navigation and help
-      else if (lowerMessage.includes('help') || lowerMessage.includes('what can you')) {
-        response = botResponses.help_with;
-      } else if (lowerMessage.includes('navigate') || lowerMessage.includes('use this site')) {
-        response = botResponses.navigate_site;
-      } else if (lowerMessage.includes('recommend') || lowerMessage.includes('suggest') || lowerMessage.includes('what should i')) {
-        response = botResponses.recommend_section;
-      } 
-      // Time and date
-      else if (lowerMessage.includes('leap') && lowerMessage.includes('year')) {
-        response = botResponses.leap_year;
-      } else if (lowerMessage.includes('tokyo') && lowerMessage.includes('time')) {
-        response = botResponses.time_tokyo;
-      } else if (lowerMessage.includes('phone') || lowerMessage.includes('telephone')) {
-        response = "The telephone was invented by Alexander Graham Bell, who patented his invention in 1876.";
-      } else if (lowerMessage.includes('indonesia') && lowerMessage.includes('independent')) {
-        response = "Indonesia proclaimed its independence on August 17, 1945.";
-      } else if (lowerMessage.includes('capital') && lowerMessage.includes('japan')) {
-        response = "The capital of Japan is Tokyo.";
-      } else if (lowerMessage.includes('nile')) {
-        response = "The Nile River is about 6,650 kilometers long and is considered the longest river in the world.";
-      } else if (lowerMessage.includes('planet') && lowerMessage.includes('largest')) {
-        response = "The largest planet in our solar system is Jupiter.";
-      } 
-      // Easter eggs
-      else if (lowerMessage.includes('video') && lowerMessage.includes('game')) {
-        response = botResponses.video_games;
-      } else if (lowerMessage.includes('beam me up') || lowerMessage.includes('scotty')) {
-        response = botResponses.beam_me_up;
-      } else if (lowerMessage.includes('meaning') && lowerMessage.includes('life')) {
-        response = botResponses.meaning_of_life;
-      } 
-      // Updated name response
-      else if (lowerMessage.includes('name') || lowerMessage.includes('siapa nama')) {
-        response = "My name is Putra Dinantio Nugroho. I'm a Data and Public Policy Enthusiast with a background in Political Science from the University of Indonesia. Nice to meet you!";
-      }
-      // Time and date
-      else if (lowerMessage.includes('time') && !lowerMessage.includes('times')) {
-        const now = new Date();
-        response = `The current time is ${now.toLocaleTimeString()}.`;
-      } else if (lowerMessage.includes('date') || lowerMessage.includes('today')) {
-        const now = new Date();
-        response = `Today's date is ${now.toLocaleDateString()}.`;
-      } else if (lowerMessage.includes('tomorrow')) {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        response = `Tomorrow's date will be ${tomorrow.toLocaleDateString()}.`;
-      } else if (lowerMessage.includes('weather')) {
-        response = "I'm sorry, I don't have access to real-time weather data. You can check a weather app or website for current conditions.";
-      } else if (lowerMessage.includes('thank')) {
-        response = "You're welcome! Feel free to ask if you have any other questions.";
-      } else if (lowerMessage.includes('old') || lowerMessage.includes('age')) {
-        response = "I'm a digital assistant representing Putra Dinantio Nugroho, who was born on April, 10 2003. I'm continuously learning and updating my knowledge to assist you better!";
-      } else if (lowerMessage.includes('color') || lowerMessage.includes('favourite')) {
-        response = "If I had to choose a favorite color, it would probably be teal - it's calming yet energetic, much like data visualization!";
-      } else if (lowerMessage.includes('music') || lowerMessage.includes('song')) {
-        response = "I enjoy a wide range of music genres, from classical to modern pop. Music helps me focus when I'm working on data analysis projects!";
-      }
-
-      // Stop thinking effect and start typing effect
-      setIsTyping(false);
-      
-      // Add bot message with typing effect
-      setChatMessages(prev => [...prev, { type: 'bot', text: response, isTyping: true }]);
-      
-      // Simulate typing completion based on message length (longer messages take more time)
-      const typingTime = Math.min(1500, Math.max(800, response.length * 10));
-      typingTimeoutRef.current = setTimeout(() => {
-        setChatMessages(prev => prev.map((msg, i) => 
-          i === prev.length - 1 ? { ...msg, isTyping: false } : msg
-        ));
-      }, typingTime);
-    }, 1500); // Thinking time before starting to type
-  };
-
-  const handleQuickResponse = (topic: keyof typeof botResponses) => {
-    // Clear any pending timeouts first
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
-      typingTimeoutRef.current = null;
-    }
-    if (thinkingTimeoutRef.current) {
-      clearTimeout(thinkingTimeoutRef.current);
-      thinkingTimeoutRef.current = null;
-    }
-    
-    // Create customized user message text based on topic
-    let userMessage = "";
-    
-    switch(topic) {
-      case 'about':
-        userMessage = "Tell me about you";
-        break;
-      case 'contact':
-        userMessage = "How can I reach you?";
-        break;
-      default:
-        userMessage = `Tell me about your ${topic}`;
-    }
-    
-    // Add user message and immediately start bot response
-    setChatMessages(prev => [...prev, { type: 'user', text: userMessage, isTyping: false }]);
-    
-    // Ensure UI updates before continuing
-    setTimeout(() => {
-      // Show thinking effect
-      setIsTyping(true);
-      
-      // Simulate thinking delay before responding
-      thinkingTimeoutRef.current = setTimeout(() => {
-        // Stop thinking effect
+        // Show typing indicator
         setIsTyping(false);
+        setChatMessages(prev => [...prev, { 
+          type: 'bot', 
+          text: "Fetching the latest Ethereum price data for you...", 
+          isTyping: true 
+        }]);
         
-        // Add bot message with typing effect
-        setChatMessages(currentMessages => [...currentMessages, { type: 'bot', text: botResponses[topic], isTyping: true }]);
-        
-        // Simulate typing completion for bot response
-        const typingTime = Math.min(2000, Math.max(1000, botResponses[topic].length * 8));
-        typingTimeoutRef.current = setTimeout(() => {
-          setChatMessages(currentMessages => currentMessages.map((msg, i) => 
-            i === currentMessages.length - 1 ? { ...msg, isTyping: false } : msg
-          ));
-        }, typingTime);
-      }, 1000); // Slightly shorter thinking time to improve responsiveness
-    }, 100);
+        try {
+          // Fetch real-time Ethereum price from CoinGecko
+          const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd,idr&include_24hr_change=true&include_market_cap=true&include_24hr_vol=true');
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch Ethereum data');
+          }
+          
+          const data = await response.json();
+          
+          if (data && data.ethereum) {
+            const ethData = data.ethereum;
+            const usdPrice = ethData.usd;
+            const idrPrice = ethData.idr;
+            const change24h = ethData.usd_24h_change ? ethData.usd_24h_change.toFixed(2) : 'N/A';
+            const marketCap = ethData.usd_market_cap ? (ethData.usd_market_cap / 1000000000).toFixed(2) : 'N/A';
+            const volume = ethData.usd_24h_vol ? (ethData.usd_24h_vol / 1000000000).toFixed(2) : 'N/A';
+            
+            // Format numbers with commas
+            const formattedUsdPrice = usdPrice.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            });
+            
+            const formattedIdrPrice = idrPrice.toLocaleString('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0
+            });
+            
+            const ethResponse = `According to real-time data from CoinGecko, Ethereum (ETH) is currently trading at ${formattedUsdPrice} (${formattedIdrPrice}). The price has ${parseFloat(change24h) >= 0 ? 'increased' : 'decreased'} by ${Math.abs(parseFloat(change24h))}% in the last 24 hours. The current market cap is $${marketCap} billion with a 24-hour trading volume of $${volume} billion. Ethereum remains the second-largest cryptocurrency by market capitalization.`;
+            
+            // Update the last message with the real data
+            setChatMessages(prev => {
+              const updated = [...prev];
+              updated[updated.length - 1] = { 
+                type: 'bot', 
+                text: ethResponse, 
+                isTyping: false 
+              };
+              return updated;
+            });
+            
+            return; // Exit the function early
+          }
+        } catch (error) {
+          console.error('Error fetching Ethereum price:', error);
+          // Show error message
+          setChatMessages(prev => {
+            const updated = [...prev];
+            updated[updated.length - 1] = { 
+              type: 'bot', 
+              text: "Sorry, I couldn't fetch the latest Ethereum price data. Please try again later.", 
+              isTyping: false 
+            };
+            return updated;
+          });
+          return; // Exit the function early
+        }
+      }
+      // ... rest of the existing code ...
+    }, 1000);
   };
 
-  // Reset chat function
-  const resetChat = () => {
-    // Clear any pending timeouts
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
-      typingTimeoutRef.current = null;
-    }
-    if (thinkingTimeoutRef.current) {
-      clearTimeout(thinkingTimeoutRef.current);
-      thinkingTimeoutRef.current = null;
-    }
-
-    // Reset chat immediately
-    setChatMessages([
-      { type: 'bot', text: "Hello there! 👋 Feel free to browse my projects or reach out for collaborations", isTyping: true }
-    ]);
-    setChatInput('');
-    setIsTyping(false);
-    
-    // Mark initial message as finished typing after a delay
-    typingTimeoutRef.current = setTimeout(() => {
-      setChatMessages(prev => [
-        { ...prev[0], isTyping: false }
-      ]);
-    }, 1500);
-  };
-
-  const router = useRouter();
-  
-  const navigateTo = (path: string) => {
-    window.open(path, '_blank');
-  };
+  // ... existing code ...
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black dark:text-white font-[system-ui]">
-      {/* Header with profile */}
-      <header className="border-b border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center space-x-4 mb-3 md:mb-0">
-            <div className="w-10 h-10 md:w-12 md:h-12 relative">
-              <Image
-                src="/images/profile.jpg" 
-                alt="Putra Dinantio" 
-                fill
-                className="rounded-full object-cover"
-                priority
-              />
-            </div>
-            <div>
-              <h1 className="font-bold text-lg md:text-xl">Putra Dinantio</h1>
-              <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">Data and Public Policy Enthusiast</p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2 md:gap-4">
-            <a 
-              href="https://drive.google.com/drive/u/0/folders/1VDoTZRxnbobzqWEdm0jGaYKbMgUEFcbS" 
-              className="text-xs md:text-sm py-1.5 md:py-2 px-3 md:px-4 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition flex items-center space-x-1 md:space-x-2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <span>Resume</span>
-            </a>
-            <a
-              href="https://github.com/dinanditio" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs md:text-sm py-1.5 md:py-2 px-3 md:px-4 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition flex items-center space-x-1 md:space-x-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 md:h-4 md:w-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              <span>GitHub</span>
-            </a>
-            <button
+    <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-900">
+      {/* Header */}
+      <header className="border-b border-gray-200 dark:border-gray-800 py-4">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <button 
               onClick={toggleDarkMode}
-              className="p-1.5 md:p-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-              aria-label="Toggle dark mode"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 mr-4"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
               {isDarkMode ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 0112 21a9 9 0 01-7.747-4.646 9 9 0 011.353-9.428l-.707-.707M14 11a5 5 0 00-7.547.756c-.712.712-.712 1.888 0 2.6s1.888.712 2.6 0C10.81 12.186 12 13 13.438 13h.124c.516 0 .99.207 1.33.55l3.205 3.205a1 1 0 01-1.414 1.414l-3.205-3.205a1.007 1.007 0 01-.55-.55l-.168-.168M14 11a5 5 0 007.547-.756c.712-.712.712-1.888 0-2.6s-1.888-.712-2.6 0c-.712.712-.712 1.888 0 2.6s1.888.712 2.6 0c.712-.712.712-1.888 0-2.6s-1.888-.712-2.6 0z" />
                 </svg>
               )}
             </button>
             <button 
-              className="md:hidden border border-gray-300 dark:border-gray-700 p-1.5 rounded-md"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 mr-4"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              {isMobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
+            <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-200">Putra Dinantio</h1>
           </div>
-        </div>
-      </header>
-
-      {/* Navigation */}
-      <nav className="border-b border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-4">
             <button 
-              className={`py-3 md:py-4 border-b-2 ${activeSection === 'chat' ? 'border-black dark:border-white font-medium' : 'border-transparent text-gray-500 dark:text-gray-400'}`}
               onClick={() => setActiveSection('chat')}
+              className={`py-2 px-4 ${activeSection === 'chat' ? 'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800'}`}
             >
               Chat
             </button>
             <button 
-              className={`py-3 md:py-4 border-b-2 ${activeSection === 'projects' ? 'border-black dark:border-white font-medium' : 'border-transparent text-gray-500 dark:text-gray-400'}`}
               onClick={() => setActiveSection('projects')}
+              className={`py-2 px-4 ${activeSection === 'projects' ? 'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800'}`}
             >
               Projects
             </button>
-          </div>
-          
-          {/* Mobile menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden py-2 flex flex-col space-y-2">
-              <button 
-                className={`py-2 ${activeSection === 'chat' ? 'font-medium' : 'text-gray-500 dark:text-gray-400'}`}
-                onClick={() => {
-                  setActiveSection('chat');
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                Chat
-              </button>
-              <button 
-                className={`py-2 ${activeSection === 'projects' ? 'font-medium' : 'text-gray-500 dark:text-gray-400'}`}
-                onClick={() => {
-                  setActiveSection('projects');
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                Projects
-              </button>
-            </div>
-          )}
+          </nav>
         </div>
-      </nav>
+      </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-10">
+      {/* Main content */}
+      <main className="flex-grow p-4 md:p-8">
         {activeSection === 'chat' && (
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-8 text-center">Work or Projects? 👨🏻‍💻</h2>
-              
-              {/* Chat container */}
-              <div className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
-                {/* Chat messages */}
-                <div className="h-96 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold mb-8 text-center">Chat</h2>
+            
+            <div className="relative">
+              <div className="absolute inset-0 z-0">
+                <PixelAnimation />
+              </div>
+              <div className="relative z-10">
+                <div className="space-y-4">
                   {chatMessages.map((message, i) => (
-                    <div 
-                      key={i} 
-                      className={`mb-4 ${message.type === 'user' ? 'ml-auto max-w-[75%]' : 'mr-auto max-w-[75%]'}`}
-                    >
+                    <div key={i} className="flex">
                       <div className={`p-3 rounded-lg ${
                         message.type === 'user' 
                           ? 'bg-gray-200 dark:bg-gray-800 rounded-br-none' 
@@ -1208,7 +1234,7 @@ export default function Home() {
                   ))}
                   {isTyping && (
                     <div className="mr-auto max-w-[75%]">
-                      <div className="p-3 rounded-lg bg-gray-100 dark:bg-gray-950 rounded-bl-none">
+                      <div className="p-3 rounded-lg bg-gray-100 dark:bg-gray-900 rounded-bl-none">
                         <div className="flex items-center gap-3">
                           <div className="text-gray-500 dark:text-gray-400">
                             <span className="font-medium">Thinking</span>
@@ -1256,64 +1282,6 @@ export default function Home() {
                       </svg>
                     </button>
                   </div>
-                </div>
-              </div>
-              
-              {/* Quick responses */}
-              <div className="mt-6">
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <button 
-                    onClick={() => handleQuickResponse('about')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
-                    disabled={isInteractionDisabled}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    About Me
-                  </button>
-                  <button 
-                    onClick={() => handleQuickResponse('skills')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
-                    disabled={isInteractionDisabled}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                    Skills
-                  </button>
-                  <button 
-                    onClick={() => handleQuickResponse('projects')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
-                    disabled={isInteractionDisabled}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                    Projects
-                  </button>
-                  <button 
-                    onClick={() => handleQuickResponse('education')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center"
-                    disabled={isInteractionDisabled}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-                    Education
-                  </button>
-                  <button 
-                    onClick={() => handleQuickResponse('contact')}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed font-[Inter,system-ui] flex items-center" 
-                    disabled={isInteractionDisabled}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Contact
-                  </button>
                 </div>
               </div>
             </div>
